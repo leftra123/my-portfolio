@@ -4,7 +4,7 @@ const nextConfig = {
     eslint: {
       ignoreDuringBuilds: true,
     },
-    images: { unoptimized: true },
+    images: { domains: ['images.unsplash.com', 'media.licdn.com'], },
   };
   
   module.exports = nextConfig;
