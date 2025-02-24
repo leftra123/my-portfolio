@@ -10,6 +10,7 @@ interface CertificationBadgeProps {
   issuer: string
   date: string
   verificationUrl: string
+  description?: string;
 }
 
 export function CertificationBadge({ title, issuer, date, verificationUrl }: CertificationBadgeProps) {
