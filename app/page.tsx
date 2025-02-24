@@ -5,7 +5,7 @@ import { EducationSection } from "@/components/sections/education"
 import { ProjectsSection } from "@/components/sections/projects"
 import ContactSection from "@/components/sections/contact"
 import { Footer } from "@/components/sections/footer"
-// import { ThemeToggle } from "@/components/theme-toggle"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
       <Navbar />
       {/* <div className="fixed top-4 right-4 z-50">
         <ThemeToggle />
-      </div> */}
+      </div>  */}
       <HeroSection />
       <ExperienceSection />
       <EducationSection />
