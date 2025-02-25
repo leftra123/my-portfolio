@@ -8,9 +8,9 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import { cn } from "@/lib/utils"
 
 export function Navbar() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const [activeSection, setActiveSection] = useState("hero")
-    const [isScrolled, setIsScrolled] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState("hero")
+  const [isScrolled, setIsScrolled] = useState(false)
 
   const navItems = [
     { name: "Inicio", href: "#hero" },
@@ -23,7 +23,7 @@ export function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
     }
-    
+
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -71,27 +71,27 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo temporal con indicador activo */}
           <Button
-  variant="ghost"
-  className="group relative gap-2 pl-2 hover:bg-transparent"
-  onClick={() => handleScroll("#hero")}
->
-  <motion.div
-    className="flex items-center gap-2"
-    whileHover={{ scale: 1.05 }}
-  >
-    <Code2 className="h-6 w-6 text-primary transition-transform group-hover:rotate-12" />
-    <span className="text-sm font-bold bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
-      @leftra123
-    </span>
-  </motion.div>
-  {activeSection === "hero" && (
-    <motion.div
-      className="absolute -bottom-1 left-0 w-full h-[2px] bg-primary"
-      layoutId="logoActive"
-      transition={{ type: "spring", stiffness: 300 }}
-    />
-  )}
-</Button>
+            variant="ghost"
+            className="group relative gap-2 pl-2 hover:bg-transparent"
+            onClick={() => handleScroll("#hero")}
+          >
+            <motion.div
+              className="flex items-center gap-2"
+              whileHover={{ scale: 1.05 }}
+            >
+              <Code2 className="h-6 w-6 text-primary transition-transform group-hover:rotate-12" />
+              <span className="text-sm font-bold bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
+                @leftra123
+              </span>
+            </motion.div>
+            {activeSection === "hero" && (
+              <motion.div
+                className="absolute -bottom-1 left-0 w-full h-[2px] bg-primary"
+                layoutId="logoActive"
+                transition={{ type: "spring", stiffness: 300 }}
+              />
+            )}
+          </Button>
 
           {/* Menú desktop */}
           <div className="hidden md:flex items-center space-x-4">
@@ -145,7 +145,7 @@ export function Navbar() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="md:hidden absolute w-full bg-background left-0 top-16 shadow-lg border-t"
+              className="md:hidden absolute w-full bg-background left-0 top-[4rem] shadow-lg border-t"
             >
               <div className="px-2 py-3">
                 {navItems.map((item, index) => {
@@ -162,7 +162,7 @@ export function Navbar() {
                         variant="ghost"
                         className={cn(
                           "w-full justify-start text-base h-12 px-4",
-                          isActive 
+                          isActive
                             ? "bg-primary/10 text-primary font-semibold"
                             : "text-muted-foreground hover:bg-muted/50"
                         )}
