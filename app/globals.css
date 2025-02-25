@@ -3,7 +3,12 @@
 @tailwind utilities;
 
 html {
-  scroll-padding-top: 6rem;
+  scroll-padding-top: var(--navbar-height);
+}
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 3.5rem;
+  }
 }
 
 @layer base {
