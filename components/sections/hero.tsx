@@ -13,7 +13,7 @@ const socialLinks = [
   { icon: <FaLinkedinIn className="w-5 h-5" />, link: 'https://linkedin.com/in/eric-aguayo-quintriqueo-b36783220', label: 'LinkedIn' },
   { icon: <FaTwitter className="w-5 h-5" />, link: 'https://x.com/leftra123', label: 'X (Twitter)' },
   { icon: <FaInstagram className="w-5 h-5" />, link: 'https://www.instagram.com/analema.x/', label: 'Instagram' },
-  { icon: <FaWhatsapp className="w-5 h-5" />, link: 'https://wa.me/+56912345678', label: 'WhatsApp' },
+  { icon: <FaWhatsapp className="w-5 h-5" />, link: 'https://wa.me/+56930518083', label: 'WhatsApp' },
   { icon: <FaFileAlt className="w-5 h-5" />, link: 'https://drive.google.com/file/d/1aqNROgnTe8nnH6YoIJ__5t6XxpRtuVI9/view', label: 'CV en PDF' },
 ]
 
