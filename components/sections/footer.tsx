@@ -28,7 +28,7 @@ export function Footer() {
   ]
 
   return (
-    <footer className="relative bg-gradient-to-b from-background to-background/95 border-t border-border/40 backdrop-blur-sm">
+    <footer className="min-h-screen snap-start relative bg-gradient-to-b from-background to-background/95 border-t border-border/40 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-6 py-16">
         {/* Logo y descripción centrados para mejorar la estética */}
         <motion.div
