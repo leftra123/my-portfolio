@@ -3,41 +3,71 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { GithubIcon, LinkedinIcon, X, Instagram, File } from "lucide-react"
+import { FaGithub, FaLinkedinIn, FaTwitter, FaInstagram, FaWhatsapp, FaFileAlt } from "react-icons/fa"
+import { FiArrowUp } from "react-icons/fi"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
 
+  // Array de iconos sociales para mantener el código DRY
+  const socialLinks = [
+    { icon: <FaGithub className="w-5 h-5" />, link: 'https://github.com/leftra123', label: 'GitHub' },
+    { icon: <FaLinkedinIn className="w-5 h-5" />, link: 'https://linkedin.com/in/eric-aguayo-quintriqueo-b36783220', label: 'LinkedIn' },
+    { icon: <FaTwitter className="w-5 h-5" />, link: 'https://x.com/leftra123', label: 'Twitter' },
+    { icon: <FaInstagram className="w-5 h-5" />, link: 'https://www.instagram.com/analema.x/', label: 'Instagram' },
+    { icon: <FaWhatsapp className="w-5 h-5" />, link: 'https://wa.me/+56912345678', label: 'WhatsApp' },
+  ]
+
+  // Links de navegación
+  const navLinks = [
+    { label: 'Inicio', href: '#hero' },
+    { label: 'Experiencia', href: '#experiencia' },
+    { label: 'Educación', href: '#educacion' },
+    { label: 'Proyectos', href: '#projects' },
+    { label: 'Contacto', href: '#contacto' },
+  ]
+
   return (
-    <footer className="min-h-screen snap-start flex flex-col items-center justify-center border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
-          {/* Columna 1: Logo y redes */}
+    <footer className="relative bg-gradient-to-b from-background to-background/95 border-t border-border/40 backdrop-blur-sm">
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        {/* Logo y descripción centrados para mejorar la estética */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60 mb-2">
+            Eric Aguayo Quintriqueo
+          </h2>
+          <p className="text-muted-foreground max-w-md mx-auto">
+            Desarrollando soluciones digitales innovadoras con pasión y creatividad
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-3 gap-12 mb-12">
+          {/* Columna 1: Redes sociales */}
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-4"
+            transition={{ duration: 0.5 }}
+            className="space-y-6"
           >
-            <h3 className="text-lg font-semibold">Eric Aguayo Quintriqueo</h3>
-            <p className="text-sm text-muted-foreground">
-              Desarrollando soluciones digitales innovadoras
-            </p>
-            <div className="flex gap-2">
-              {[
-                { icon: <GithubIcon className="w-5 h-5" />, link: 'https://github.com/leftra123' },
-                { icon: <LinkedinIcon className="w-5 h-5" />, link: 'https://linkedin.com/in/eric-aguayo-quintriqueo-b36783220' },
-                { icon: <X className="w-5 h-5" />, link: 'https://x.com/leftra123' },
-                { icon: <Instagram className="w-5 h-5" />, link: 'https://www.instagram.com/analema.x/' },
-              ].map((item, index) => (
+            <h3 className="text-lg font-semibold relative pb-2 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-12 after:bg-primary">
+              Conecta
+            </h3>
+            <div className="flex flex-wrap gap-3">
+              {socialLinks.map((item, index) => (
                 <Button
                   key={index}
-                  variant="ghost"
+                  variant="outline"
                   size="icon"
-                  className="h-9 w-9 rounded-full"
+                  className="h-10 w-10 rounded-full border-border/50 bg-background/50 backdrop-blur-sm hover:bg-primary/10 hover:border-primary transition-all duration-300"
                   asChild
                 >
-                  <Link href={item.link} target="_blank" rel="noopener">
+                  <Link href={item.link} target="_blank" rel="noopener" aria-label={item.label}>
                     {item.icon}
                   </Link>
                 </Button>
@@ -47,52 +77,66 @@ export function Footer() {
 
           {/* Columna 2: Navegación */}
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="space-y-2"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="space-y-6"
           >
-            <h4 className="text-lg font-semibold">Navegación</h4>
-            <nav className="flex flex-col space-y-1">
-              {[
-                { label: 'Inicio', href: '#hero' },
-                { label: 'Experiencia', href: '#experiencia' },
-                { label: 'Educación', href: '#educacion' },
-                { label: 'Proyectos', href: '#projects' },
-                { label: 'Contacto', href: '#contacto' },
-              ].map((item, index) => (
+            <h3 className="text-lg font-semibold relative pb-2 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-12 after:bg-primary">
+              Navegación
+            </h3>
+            <nav className="grid grid-cols-2 gap-2">
+              {navLinks.map((item, index) => (
                 <Link
                   key={index}
                   href={item.href}
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:translate-x-1 transform inline-flex items-center"
                 >
+                  <span className="text-primary mr-2">•</span>
                   {item.label}
                 </Link>
               ))}
             </nav>
           </motion.div>
 
-          {/* Columna 3: Recursos */}
+          {/* Columna 3: Contacto rápido */}
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-2"
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="space-y-6"
           >
-            <h4 className="text-lg font-semibold">Recursos</h4>
-            <div className="flex flex-col space-y-1">
-              <Button variant="link" className="justify-start h-auto p-0" asChild>
+            <h3 className="text-lg font-semibold relative pb-2 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-12 after:bg-primary">
+              Recursos
+            </h3>
+            <div className="space-y-4">
+              <Button variant="ghost" className="justify-start h-auto p-0 group" asChild>
                 <Link
                   href="https://drive.google.com/file/d/1aqNROgnTe8nnH6YoIJ__5t6XxpRtuVI9/view"
                   target="_blank"
-                  className="text-muted-foreground hover:text-primary"
+                  className="text-muted-foreground hover:text-primary flex items-center"
                 >
-                  <File className="w-4 h-4 mr-2" />
-                  Curriculum Vitae
+                  <FaFileAlt className="w-4 h-4 mr-2 group-hover:text-primary transition-colors" />
+                  <span className="group-hover:underline">Curriculum Vitae</span>
                 </Link>
               </Button>
+              <p className="text-sm text-muted-foreground">
+                ¿Interesado en colaborar? Contáctame por correo:
+                <Button variant="link" className="h-auto p-0 mt-1" asChild>
+                  <a href="mailto:info@ericaguayo.dev" className="text-primary font-medium">
+                    info@ericaguayo.dev
+                  </a>
+                </Button>
+              </p>
             </div>
           </motion.div>
+        </div>
+
+        {/* Línea divisoria estilizada */}
+        <div className="relative py-2 my-6">
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-16 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
         </div>
 
         {/* Derechos de autor */}
@@ -100,25 +144,27 @@ export function Footer() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="border-t pt-8 text-center text-sm text-muted-foreground"
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="text-center text-sm text-muted-foreground"
         >
-          <p>© {currentYear} Eric Aguayo Quintriqueo. Todos los derechos reservados.</p>
+          <p className="mb-1">© {currentYear} Eric Aguayo Quintriqueo. Todos los derechos reservados.</p>
           <p>Desarrollado con Next.js, Tailwind CSS y Vercel</p>
         </motion.div>
 
-        {/* Botón flotante para ir arriba */}
+        {/* Botón flotante para ir arriba con efecto de hover */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="fixed bottom-8 right-8"
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          className="fixed bottom-8 right-8 z-10"
         >
           <Button
             variant="outline"
             size="icon"
-            className="rounded-full shadow-lg"
+            className="rounded-full shadow-lg border border-border/40 bg-background/80 backdrop-blur-sm hover:bg-primary/20 transition-all duration-300 h-12 w-12"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            aria-label="Volver arriba"
           >
-            ↑
+            <FiArrowUp className="h-5 w-5" />
           </Button>
         </motion.div>
       </div>

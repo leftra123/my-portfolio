@@ -3,16 +3,18 @@
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { TypewriterEffect } from "@/components/ui/typewriter-effect"
-import { GithubIcon, LinkedinIcon, X, Instagram, File } from "lucide-react"
 import Image from "next/image"
 import React from "react"
+// Importamos React Icons
+import { FaGithub, FaLinkedinIn, FaTwitter, FaInstagram, FaWhatsapp, FaFileAlt } from "react-icons/fa"
 
 const socialLinks = [
-  { icon: <GithubIcon className="w-5 h-5" />, link: 'https://github.com/leftra123', label: 'Github' },
-  { icon: <LinkedinIcon className="w-5 h-5" />, link: 'https://linkedin.com/in/eric-aguayo-quintriqueo-b36783220', label: 'LinkedIn' },
-  { icon: <X className="w-5 h-5" />, link: 'https://x.com/leftra123', label: 'X (Twitter)' },
-  { icon: <Instagram className="w-5 h-5" />, link: 'https://www.instagram.com/analema.x/', label: 'Instagram' },
-  { icon: <File className="w-5 h-5" />, link: 'https://drive.google.com/file/d/1aqNROgnTe8nnH6YoIJ__5t6XxpRtuVI9/view', label: 'CV en PDF' }
+  { icon: <FaGithub className="w-5 h-5" />, link: 'https://github.com/leftra123', label: 'Github' },
+  { icon: <FaLinkedinIn className="w-5 h-5" />, link: 'https://linkedin.com/in/eric-aguayo-quintriqueo-b36783220', label: 'LinkedIn' },
+  { icon: <FaTwitter className="w-5 h-5" />, link: 'https://x.com/leftra123', label: 'X (Twitter)' },
+  { icon: <FaInstagram className="w-5 h-5" />, link: 'https://www.instagram.com/analema.x/', label: 'Instagram' },
+  { icon: <FaWhatsapp className="w-5 h-5" />, link: 'https://wa.me/+56912345678', label: 'WhatsApp' },
+  { icon: <FaFileAlt className="w-5 h-5" />, link: 'https://drive.google.com/file/d/1aqNROgnTe8nnH6YoIJ__5t6XxpRtuVI9/view', label: 'CV en PDF' },
 ]
 
 function scrollToSection(id: string) {
@@ -22,16 +24,17 @@ function scrollToSection(id: string) {
 
 export function HeroSection() {
   return (
-    <div className="min-h-screen snap-start flex flex-col items-center justify-center relative px-4 py-8 md:py-12" id="hero">
+    <div className="min-h-screen snap-start flex flex-col items-center justify-center relative px-4 py-8 md:py-12 bg-gradient-to-b from-background to-background/90" id="hero">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="text-center w-full max-w-4xl"
       >
-        {/* Contenedor de imagen */}
+        {/* Contenedor de imagen mejorado */}
         <div className="relative w-64 h-64 mx-auto mb-8">
           <div className="absolute inset-0 rounded-full p-[2px] bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 animate-spin"></div>
+          <div className="absolute inset-0 rounded-full blur-xl bg-gradient-to-r from-green-400/30 via-blue-500/30 to-purple-600/30 animate-pulse"></div>
           <div className="relative w-full h-full rounded-full overflow-hidden">
             <Image
               src="https://media.licdn.com/dms/image/v2/D4E03AQGxNzYNbH4cTg/profile-displayphoto-shrink_800_800/B4EZR0iOZxHMAk-/0/1737121918154?e=1745452800&v=beta&t=DmiJYuunNF1GhUsAlnZJM6UAugce8K8yYZLBEM1dNoQ"
@@ -44,7 +47,7 @@ export function HeroSection() {
 
         {/* Títulos */}
         <motion.h1
-          className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 px-2"
+          className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 px-2 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
@@ -65,7 +68,7 @@ export function HeroSection() {
         <div className="flex flex-col md:flex-row gap-3 justify-center mb-8 md:mb-12 px-2">
           <Button
             size="lg"
-            className="w-full md:w-auto"
+            className="w-full md:w-auto bg-primary/90 hover:bg-primary transition-all duration-300"
             onClick={() => scrollToSection('projects')}
           >
             Ver Proyectos
@@ -73,7 +76,7 @@ export function HeroSection() {
           <Button
             size="lg"
             variant="outline"
-            className="w-full md:w-auto"
+            className="w-full md:w-auto border-primary/20 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300"
             onClick={() => scrollToSection('contacto')}
           >
             Contacto
@@ -81,13 +84,13 @@ export function HeroSection() {
         </div>
 
         {/* Redes sociales */}
-        <div className="flex flex-wrap gap-2 justify-center px-2">
-          {socialLinks.map((item) => (
+        <div className="flex flex-wrap gap-3 justify-center px-2">
+          {socialLinks.map((item, index) => (
             <Button
-              key={item.link}
+              key={index}
               variant="ghost"
               size="icon"
-              className="h-10 w-10 rounded-full"
+              className="h-10 w-10 rounded-full bg-background/80 backdrop-blur-sm hover:bg-primary/10 hover:scale-110 transition-all duration-300"
               onClick={() => window.open(item.link, '_blank')}
               aria-label={item.label}
             >
@@ -97,16 +100,16 @@ export function HeroSection() {
         </div>
       </motion.div>
 
-      {/* Indicador de scroll */}
+      {/* Indicador de scroll mejorado */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
-        className="absolute bottom-4 md:bottom-8"
+        className="absolute bottom-8 md:bottom-12"
       >
         <div className="animate-bounce">
-          <div className="w-5 h-8 md:w-6 md:h-10 rounded-full border-2 border-primary flex items-start justify-center p-1.5 md:p-2">
-            <div className="w-1 h-2 md:h-3 bg-primary rounded-full animate-scroll" />
+          <div className="w-6 h-10 rounded-full border-2 border-primary/50 flex items-start justify-center p-2">
+            <div className="w-1.5 h-3 bg-primary/80 rounded-full animate-pulse" />
           </div>
         </div>
       </motion.div>
