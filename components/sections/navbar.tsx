@@ -17,7 +17,7 @@ export function Navbar() {
     { name: "Experiencia", href: "#experiencia" },
     { name: "Educación", href: "#educacion" },
     { name: "Proyectos", href: "#projects" },
-    { name: "Habilidades", href: "#skills" },
+    // { name: "Habilidades", href: "#skills" },
     { name: "Logros", href: "#logros" },
     { name: "Contacto", href: "#contacto" }
   ]
