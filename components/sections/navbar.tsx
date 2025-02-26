@@ -80,10 +80,10 @@ export function Navbar() {
               className="flex items-center gap-2"
               whileHover={{ scale: 1.05 }}
             >
-              <Code2 className="h-6 w-6 text-primary transition-transform group-hover:rotate-12" />
               <span className="text-sm font-bold bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
                 @leftra123
               </span>
+              <Code2 className="h-6 w-6 text-primary transition-transform group-hover:rotate-12" />
             </motion.div>
             {activeSection === "hero" && (
               <motion.div

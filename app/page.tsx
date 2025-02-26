@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/sections/hero"
 import { ExperienceSection } from "@/components/sections/experience"
 import { EducationSection } from "@/components/sections/education"
 import { ProjectsSection } from "@/components/sections/projects"
+import { SkillsSection } from "@/components/sections/skills"
 import ContactSection from "@/components/sections/contact"
 import { Footer } from "@/components/sections/footer"
 import { AchievementsSection } from "@/components/sections/achievements"
@@ -19,9 +20,10 @@ export default function Home() {
       <ExperienceSection />
       <EducationSection />
       <ProjectsSection />
-      {/* <AchievementsSection /> */}
-      {/* <ContactSection /> */}
-      {/* <Footer /> */}
+      {/* <SkillsSection /> */}
+      <AchievementsSection />
+      <ContactSection />
+      <Footer />
     </main>
   )
 }
