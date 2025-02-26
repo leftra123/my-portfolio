@@ -4,7 +4,6 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { FaGithub, FaLinkedinIn, FaTwitter, FaInstagram, FaWhatsapp, FaFileAlt } from "react-icons/fa"
-import { FiArrowUp } from "react-icons/fi"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()

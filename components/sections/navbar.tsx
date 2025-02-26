@@ -51,7 +51,9 @@ export function Navbar() {
     navItems.forEach(({ href }) => {
       const sectionId = href.split('#')[1]
       const section = document.getElementById(sectionId)
-      section && observer.observe(section)
+      if (section) {
+        observer.observe(section)
+      }
     })
     return () => observer.disconnect()
   }, [])
