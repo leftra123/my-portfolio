@@ -1,5 +1,4 @@
 "use client"
-
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Award, ExternalLink } from "lucide-react"
@@ -10,10 +9,10 @@ interface CertificationBadgeProps {
   issuer: string
   date: string
   verificationUrl: string
-  description?: string;
+  description?: string
 }
 
-export function CertificationBadge({ title, issuer, date, verificationUrl }: CertificationBadgeProps) {
+export function CertificationBadge({ title, issuer, date, verificationUrl, description }: CertificationBadgeProps) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -26,7 +25,12 @@ export function CertificationBadge({ title, issuer, date, verificationUrl }: Cer
           <Award className="w-8 h-8 text-primary" />
           <div className="flex-1">
             <h4 className="font-semibold">{title}</h4>
-            <p className="text-sm text-muted-foreground">{issuer} • {date}</p>
+            <p className="text-sm text-muted-foreground">
+              {issuer} • {date}
+            </p>
+            {description && (
+              <p className="text-xs text-muted-foreground mt-1">{description}</p>
+            )}
           </div>
           <Button variant="ghost" size="icon" asChild>
             <a href={verificationUrl} target="_blank" rel="noopener noreferrer">
