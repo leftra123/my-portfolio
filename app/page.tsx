@@ -6,6 +6,7 @@ import { ProjectsSection } from "@/components/sections/projects"
 import ContactSection from "@/components/sections/contact"
 import { Footer } from "@/components/sections/footer"
 import { AchievementsSection } from "@/components/sections/achievements"
+import { ScrollToTopButton } from "@/components/sections/ScrollToTopButton"
 // import { ThemeToggle } from "@/components/theme-toggle"
 
 export default function Home() {
@@ -22,6 +23,7 @@ export default function Home() {
       <AchievementsSection />
       <ContactSection />
       <Footer />
+      <ScrollToTopButton />
     </main>
   )
 }

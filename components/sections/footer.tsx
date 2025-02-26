@@ -151,22 +151,7 @@ export function Footer() {
           <p>Desarrollado con Next.js, Tailwind CSS y Vercel</p>
         </motion.div>
 
-        {/* Botón flotante para ir arriba con efecto de hover */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          className="fixed bottom-8 right-8 z-10"
-        >
-          <Button
-            variant="outline"
-            size="icon"
-            className="rounded-full shadow-lg border border-border/40 bg-background/80 backdrop-blur-sm hover:bg-primary/20 transition-all duration-300 h-12 w-12"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            aria-label="Volver arriba"
-          >
-            <FiArrowUp className="h-5 w-5" />
-          </Button>
-        </motion.div>
+        
       </div>
     </footer>
   )
