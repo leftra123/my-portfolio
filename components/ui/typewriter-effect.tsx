@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { useTypewriter } from "@/hooks/useTypewriter"
 
 interface TypewriterEffectProps {
   words: string[]
@@ -9,34 +9,7 @@ interface TypewriterEffectProps {
 }
 
 export function TypewriterEffect({ words, className }: TypewriterEffectProps) {
-  // si no hay palabras, no se renderiza nada, :)
-  if (!words || words.length === 0) return null
-
-  const [currentWord, setCurrentWord] = useState(0)
-  const [currentText, setCurrentText] = useState("")
-  const [isDeleting, setIsDeleting] = useState(false)
-
-  useEffect(() => {
-    const word = words[currentWord] || "" // siempre tendrá un string
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        if (currentText.length < word.length) {
-          setCurrentText(word.slice(0, currentText.length + 1))
-        } else {
-          setTimeout(() => setIsDeleting(true), 1500)
-        }
-      } else {
-        if (currentText.length > 0) {
-          setCurrentText(word.slice(0, currentText.length - 1))
-        } else {
-          setIsDeleting(false)
-          setCurrentWord((prev) => (prev + 1) % words.length)
-        }
-      }
-    }, isDeleting ? 50 : 100)
-
-    return () => clearTimeout(timeout)
-  }, [currentText, isDeleting, currentWord, words])
+  const currentText = useTypewriter(words)
 
   return (
     <div className={className}>

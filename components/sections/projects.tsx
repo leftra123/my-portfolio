@@ -4,14 +4,13 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ProjectCard } from "@/components/ui/project-card"
-import { Code, Users, Award } from "lucide-react"
 
 interface Proyecto {
   id: number
   title: string
   description: string
   tech: string[]
-  image: string
+  image?: string
   repoUrl: string
   category: string
 }
@@ -107,7 +106,6 @@ const proyectos: Proyecto[] = [
     repoUrl: "https://github.com/leftra123/incidentes_inacap_evaluacion_3",
     category: "movil"
   },
-  // Nuevos proyectos
   {
     id: 10,
     title: "NextJS Context CRUD",
@@ -134,13 +132,12 @@ const proyectos: Proyecto[] = [
     description:
       "Sistema ERP con Django en el backend y template en HTML, CSS y JavaScript en el frontend, diseñado para optimizar la gestión empresarial. Desplegado con Docker.",
     tech: ["Django", "HTML", "CSS", "JavaScript", "Docker"],
-    image: "https://images.unsplash.com/photo-1556155092-8707de31f9c4",
+    image: "", // sin imagen
     repoUrl: "https://github.com/patoag/erp-project",
     category: "fullstack"
   }
 ]
 
-// Categorías en español
 const categorias = [
   { id: "todos", label: "Todos" },
   { id: "frontend", label: "Frontend" },
@@ -156,18 +153,21 @@ export function ProjectsSection() {
   const [showAllProjects, setShowAllProjects] = useState(false)
 
   // Filtrar proyectos según la categoría seleccionada
-  let proyectosFiltrados = proyectos.filter((proyecto) => {
+  const proyectosFiltrados = proyectos.filter((proyecto) => {
     if (selectedCategory === "todos") return true
     return proyecto.category === selectedCategory
   })
 
-  // Determinar cuántos proyectos mostrar: 3 o todos
+  // Determinar cuántos proyectos mostrar: 4 o todos
   const proyectosAMostrar = showAllProjects
     ? proyectosFiltrados
-    : proyectosFiltrados.slice(0, 3)
+    : proyectosFiltrados.slice(0, 4)
 
   return (
-    <section className="min-h-screen snap-start flex flex-col items-center justify-center py-20 bg-gradient-to-b from-background to-background/80" id="projects">
+    <section
+      className="min-h-screen snap-start flex flex-col items-center justify-center py-20 bg-gradient-to-b from-background to-background/80"
+      id="projects"
+    >
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-4xl font-bold mb-12">Proyectos</h2>
 
@@ -196,7 +196,7 @@ export function ProjectsSection() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6"
           >
             {proyectosAMostrar.map((project) => (
               <ProjectCard key={project.id} {...project} />
@@ -204,37 +204,14 @@ export function ProjectsSection() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Botón "Ver más" solo si hay más de 3 proyectos filtrados */}
-        {proyectosFiltrados.length > 3 && (
+        {/* Botón "Ver más" solo si hay más de 4 proyectos filtrados */}
+        {proyectosFiltrados.length > 4 && (
           <div className="mt-8 flex justify-center">
             <Button onClick={() => setShowAllProjects(!showAllProjects)}>
               {showAllProjects ? "Ver menos" : "Ver más"}
             </Button>
           </div>
         )}
-
-        {/* Sección de Logros */}
-        <div className="mt-16">
-          <h3 className="text-2xl font-semibold mb-8">Logros</h3>
-          <div className="grid md:grid-cols-3 gap-6">
-  <div className="flex flex-col items-center text-center">
-    <Code className="w-6 h-6 mb-2" />
-    <p className="text-lg font-bold">5+ Años</p>
-    <p className="text-sm text-muted-foreground">de Experiencia</p>
-  </div>
-  <div className="flex flex-col items-center text-center">
-    <Users className="w-6 h-6 mb-2" />
-    <p className="text-lg font-bold">10+ Proyectos</p>
-    <p className="text-sm text-muted-foreground">en Producción</p>
-  </div>
-  <div className="flex flex-col items-center text-center">
-    <Award className="w-6 h-6 mb-2" />
-    <p className="text-lg font-bold">15+ Certificaciones</p>
-    <p className="text-sm text-muted-foreground">Obtenidas</p>
-  </div>
-</div>
-
-        </div>
       </div>
     </section>
   )

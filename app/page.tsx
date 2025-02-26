@@ -5,6 +5,7 @@ import { EducationSection } from "@/components/sections/education"
 import { ProjectsSection } from "@/components/sections/projects"
 import ContactSection from "@/components/sections/contact"
 import { Footer } from "@/components/sections/footer"
+import { AchievementsSection } from "@/components/sections/achievements"
 // import { ThemeToggle } from "@/components/theme-toggle"
 
 export default function Home() {
@@ -15,11 +16,12 @@ export default function Home() {
         <ThemeToggle />
       </div>  */}
       <HeroSection />
-      <ExperienceSection />
-      <EducationSection />
-      <ProjectsSection />
-      <ContactSection />
-      <Footer />
+      {/* <ExperienceSection /> */}
+      {/* <EducationSection /> */}
+      {/* <ProjectsSection /> */}
+      {/* <AchievementsSection /> */}
+      {/* <ContactSection /> */}
+      {/* <Footer /> */}
     </main>
   )
 }

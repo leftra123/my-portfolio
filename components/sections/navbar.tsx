@@ -17,13 +17,15 @@ export function Navbar() {
     { name: "Experiencia", href: "#experiencia" },
     { name: "Educación", href: "#educacion" },
     { name: "Proyectos", href: "#projects" },
+    { name: "Habilidades", href: "#skills" },
+    { name: "Logros", href: "#logros" },
     { name: "Contacto", href: "#contacto" }
   ]
+  
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
     }
-
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -45,13 +47,12 @@ export function Navbar() {
       },
       { threshold: 0.3 }
     )
-
+    // Observamos todas las secciones
     navItems.forEach(({ href }) => {
       const sectionId = href.split('#')[1]
       const section = document.getElementById(sectionId)
       section && observer.observe(section)
     })
-
     return () => observer.disconnect()
   }, [])
 
@@ -69,7 +70,7 @@ export function Navbar() {
     )}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo temporal con indicador activo */}
+          {/* Logo */}
           <Button
             variant="ghost"
             className="group relative gap-2 pl-2 hover:bg-transparent"
@@ -138,45 +139,32 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* Menú móvil mejorado */}
+        {/* Menú móvil */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="md:hidden absolute w-full bg-background left-0 top-[4rem] shadow-lg border-t"
+              className="md:hidden absolute w-full bg-background left-0 top-16 shadow-lg border-t"
             >
               <div className="px-2 py-3">
-                {navItems.map((item, index) => {
+                {navItems.map((item) => {
                   const isActive = activeSection === item.href.split('#')[1]
                   return (
-                    <motion.div
+                    <Button
                       key={item.href}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -20 }}
-                      transition={{ delay: index * 0.05 }}
+                      variant="ghost"
+                      className={cn(
+                        "w-full justify-start text-base h-12 px-4",
+                        isActive 
+                          ? "bg-primary/10 text-primary font-semibold"
+                          : "text-muted-foreground hover:bg-muted/50"
+                      )}
+                      onClick={() => handleScroll(item.href)}
                     >
-                      <Button
-                        variant="ghost"
-                        className={cn(
-                          "w-full justify-start text-base h-12 px-4",
-                          isActive
-                            ? "bg-primary/10 text-primary font-semibold"
-                            : "text-muted-foreground hover:bg-muted/50"
-                        )}
-                        onClick={() => handleScroll(item.href)}
-                      >
-                        {item.name}
-                        {isActive && (
-                          <motion.div
-                            className="ml-2 w-2 h-2 rounded-full bg-primary"
-                            layoutId="mobileActive"
-                          />
-                        )}
-                      </Button>
-                    </motion.div>
+                      {item.name}
+                    </Button>
                   )
                 })}
               </div>

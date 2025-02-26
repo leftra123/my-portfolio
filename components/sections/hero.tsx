@@ -5,6 +5,20 @@ import { Button } from "@/components/ui/button"
 import { TypewriterEffect } from "@/components/ui/typewriter-effect"
 import { GithubIcon, LinkedinIcon, X, Instagram, File } from "lucide-react"
 import Image from "next/image"
+import React from "react"
+
+const socialLinks = [
+  { icon: <GithubIcon className="w-5 h-5" />, link: 'https://github.com/leftra123', label: 'Github' },
+  { icon: <LinkedinIcon className="w-5 h-5" />, link: 'https://linkedin.com/in/eric-aguayo-quintriqueo-b36783220', label: 'LinkedIn' },
+  { icon: <X className="w-5 h-5" />, link: 'https://x.com/leftra123', label: 'X (Twitter)' },
+  { icon: <Instagram className="w-5 h-5" />, link: 'https://www.instagram.com/analema.x/', label: 'Instagram' },
+  { icon: <File className="w-5 h-5" />, link: 'https://drive.google.com/file/d/1aqNROgnTe8nnH6YoIJ__5t6XxpRtuVI9/view', label: 'CV en PDF' }
+]
+
+function scrollToSection(id: string) {
+  const section = document.getElementById(id)
+  section?.scrollIntoView({ behavior: 'smooth' })
+}
 
 export function HeroSection() {
   return (
@@ -21,12 +35,12 @@ export function HeroSection() {
           <div className="relative w-full h-full rounded-full overflow-hidden">
             <Image
               src="https://media.licdn.com/dms/image/v2/D4E03AQGxNzYNbH4cTg/profile-displayphoto-shrink_800_800/B4EZR0iOZxHMAk-/0/1737121918154?e=1745452800&v=beta&t=DmiJYuunNF1GhUsAlnZJM6UAugce8K8yYZLBEM1dNoQ"
-              alt="Profile"
+              alt="Foto de perfil de Eric Aguayo Quintriqueo"
               fill
               className="rounded-full border-4 border-primary/20 object-cover"
             />
           </div>
-          </div>
+        </div>
 
         {/* Títulos */}
         <motion.h1
@@ -51,46 +65,31 @@ export function HeroSection() {
         <div className="flex flex-col md:flex-row gap-3 justify-center mb-8 md:mb-12 px-2">
           <Button
             size="lg"
-            className="w-full md:w-auto cursor-pointer"
-            onClick={() => {
-              const proyectosSection = document.getElementById('projects')
-              if (proyectosSection) {
-                proyectosSection.scrollIntoView({ behavior: 'smooth' })
-              }
-            }}
+            className="w-full md:w-auto"
+            onClick={() => scrollToSection('projects')}
           >
             Ver Proyectos
           </Button>
           <Button
             size="lg"
             variant="outline"
-            className="w-full md:w-auto cursor-pointer"
-            onClick={() => {
-              const contactoSection = document.getElementById('contacto')
-              if (contactoSection) {
-                contactoSection.scrollIntoView({ behavior: 'smooth' })
-              }
-            }}
+            className="w-full md:w-auto"
+            onClick={() => scrollToSection('contacto')}
           >
             Contacto
           </Button>
         </div>
 
-        {/* Redes sociales - Con cursor pointer */}
+        {/* Redes sociales */}
         <div className="flex flex-wrap gap-2 justify-center px-2">
-          {[
-            { icon: <GithubIcon className="w-5 h-5" />, link: 'https://github.com/leftra123' },
-            { icon: <LinkedinIcon className="w-5 h-5" />, link: 'https://linkedin.com/in/eric-aguayo-quintriqueo-b36783220' },
-            { icon: <X className="w-5 h-5" />, link: 'https://x.com/leftra123' },
-            { icon: <Instagram className="w-5 h-5" />, link: 'https://www.instagram.com/analema.x/' },
-            { icon: <File className="w-5 h-5" />, link: 'https://drive.google.com/file/d/1aqNROgnTe8nnH6YoIJ__5t6XxpRtuVI9/view' }
-          ].map((item, index) => (
+          {socialLinks.map((item) => (
             <Button
-              key={index}
+              key={item.link}
               variant="ghost"
               size="icon"
-              className="h-10 w-10 rounded-full cursor-pointer"
+              className="h-10 w-10 rounded-full"
               onClick={() => window.open(item.link, '_blank')}
+              aria-label={item.label}
             >
               {item.icon}
             </Button>

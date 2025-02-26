@@ -1,92 +1,50 @@
-"use client"
-
-import { motion } from "framer-motion"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import React from "react"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, Github } from "lucide-react"
-import Image from "next/image"
-import { useState } from "react"
 
 interface ProjectCardProps {
+  id: number
   title: string
   description: string
   tech: string[]
-  image: string
-  liveUrl?: string
-  githubUrl?: string
+  image?: string
+  repoUrl: string
+  category: string
 }
 
-export function ProjectCard({ title, description, tech, image, liveUrl, githubUrl }: ProjectCardProps) {
-  const [imageLoading, setImageLoading] = useState(true)
-
+export function ProjectCard({
+  title,
+  description,
+  tech,
+  image,
+  repoUrl
+}: ProjectCardProps) {
+  const defaultImage = "https://via.placeholder.com/300x200?text=No+Image"
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      whileHover={{ y: -5 }}
-    >
-      <Card className="overflow-hidden h-full flex flex-col">
-        <div className="relative h-48 overflow-hidden">
-          <div
-            className={`absolute inset-0 bg-muted animate-pulse ${
-              imageLoading ? 'block' : 'hidden'
-            }`}
-          />
-          <Image
-            src={image}
-            alt={title}
-            fill
-            className={`object-cover transition-all duration-300 ${
-              imageLoading ? 'scale-110 blur-lg' : 'scale-100 blur-0'
-            }`}
-            onLoadingComplete={() => setImageLoading(false)}
-            priority={false}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
+    <div className="bg-card rounded-lg shadow-md overflow-hidden flex flex-col">
+      <img
+        src={image && image.trim() !== "" ? image : defaultImage}
+        alt={title}
+        className="w-full h-48 object-cover"
+      />
+      <div className="p-4 flex flex-col flex-1">
+        <h3 className="text-xl font-semibold mb-2">{title}</h3>
+        <p className="text-sm text-muted-foreground mb-4 break-words">
+          {description}
+        </p>
+        <div className="flex flex-wrap gap-2 mb-4">
+          {tech.map((t, index) => (
+            <span
+              key={index}
+              className="text-xs bg-primary/10 text-primary px-2 py-1 rounded"
+            >
+              {t}
+            </span>
+          ))}
         </div>
-        <CardHeader>
-          <CardTitle className="line-clamp-1">{title}</CardTitle>
-        </CardHeader>
-        <CardContent className="flex-grow">
-          <p className="text-muted-foreground mb-4 line-clamp-2">{description}</p>
-          <div className="flex flex-wrap gap-2">
-            {tech.map((item) => (
-              <Badge key={item} variant="secondary">{item}</Badge>
-            ))}
-          </div>
-        </CardContent>
-        <CardFooter className="gap-2">
-          {liveUrl && (
-            <Button variant="outline" size="sm" asChild>
-              <a
-                href={liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center"
-              >
-                <ExternalLink className="w-4 h-4 mr-2" />
-                Live Demo
-              </a>
-            </Button>
-          )}
-          {githubUrl && (
-            <Button variant="outline" size="sm" asChild>
-              <a
-                href={githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center"
-              >
-                <Github className="w-4 h-4 mr-2" />
-                Code
-              </a>
-            </Button>
-          )}
-        </CardFooter>
-      </Card>
-    </motion.div>
+        <Button onClick={() => window.open(repoUrl, "_blank")}>
+          Ver Repo
+        </Button>
+      </div>
+    </div>
   )
 }
