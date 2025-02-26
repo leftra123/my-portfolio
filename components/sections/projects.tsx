@@ -1,19 +1,9 @@
 "use client"
 
-import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ProjectCard } from "@/components/ui/project-card"
-
-interface Proyecto {
-  id: number
-  title: string
-  description: string
-  tech: string[]
-  image?: string
-  repoUrl: string
-  category: string
-}
+import { useProjects, Proyecto } from "@/hooks/useProjects"
 
 const proyectos: Proyecto[] = [
   {
@@ -22,7 +12,7 @@ const proyectos: Proyecto[] = [
     description:
       "Solución para procesamiento automatizado de remuneraciones en el sector educativo (SEP, PIE y NORMAL). Interfaz amigable con PyQt5 y cálculos avanzados en Python.",
     tech: ["Python", "PyQt5"],
-    image: "https://images.unsplash.com/photo-1603570416953-44dbece210f2",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
     repoUrl: "https://github.com/leftra123/colab",
     category: "datos"
   },
@@ -32,7 +22,7 @@ const proyectos: Proyecto[] = [
     description:
       "Aplicación web para calcular horas extras y pagos a conductores, gestionando rutas de furgones y proveedores.",
     tech: ["Python", "Backend"],
-    image: "https://images.unsplash.com/photo-1522204523234-872ce1d86d1a",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
     repoUrl: "https://github.com/leftra123/transporte_2",
     category: "backend"
   },
@@ -42,7 +32,7 @@ const proyectos: Proyecto[] = [
     description:
       "Clon de la página de Tesla realizado con HTML, CSS, JavaScript, Astro y TailwindCSS. Desplegado en Netlify.",
     tech: ["HTML", "CSS", "JavaScript", "Astro", "TailwindCSS"],
-    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
     repoUrl: "https://github.com/leftra123/landing-tesla",
     category: "frontend"
   },
@@ -62,7 +52,7 @@ const proyectos: Proyecto[] = [
     description:
       "Sistema de gestión educativa con Django en el servidor y React + Tailwind en el cliente. CRUD de establecimientos, docentes y asistentes.",
     tech: ["Django", "React", "TailwindCSS"],
-    image: "https://images.unsplash.com/photo-1532614338840-84c4e58f48f8",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
     repoUrl: "https://github.com/leftra123/gestion-educativa-api",
     category: "fullstack"
   },
@@ -72,7 +62,7 @@ const proyectos: Proyecto[] = [
     description:
       "Proyecto en C para Arduino: controla LEDs, buzzer y muestra mensajes según valores numéricos y potenciómetro.",
     tech: ["C", "Arduino"],
-    image: "https://images.unsplash.com/photo-1611078481827-4d7b83f18c6e",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
     repoUrl: "https://github.com/leftra123/arduino",
     category: "hardware"
   },
@@ -82,7 +72,7 @@ const proyectos: Proyecto[] = [
     description:
       "Sistema de control de devoluciones para Ideal S.A. con roles administrativos y consulta de API REST para valor del dólar.",
     tech: ["Python", "Django", "MySQL"],
-    image: "https://images.unsplash.com/photo-1557625581-5c9aceaf8c56",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
     repoUrl: "https://github.com/leftra123/devolucion-project-django",
     category: "backend"
   },
@@ -92,7 +82,7 @@ const proyectos: Proyecto[] = [
     description:
       "Proyecto para compartir ideas y proyectos de la comunidad, utilizando HTML, CSS y JavaScript.",
     tech: ["HTML", "CSS", "JavaScript"],
-    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
     repoUrl: "https://github.com/leftra123/innovacionemprendimientoII",
     category: "frontend"
   },
@@ -102,7 +92,7 @@ const proyectos: Proyecto[] = [
     description:
       "Aplicación móvil que une Java con Firebase para gestionar incidentes, desarrollada como evaluación académica.",
     tech: ["Java", "Firebase", "Mobile"],
-    image: "https://images.unsplash.com/photo-1618913869524-9d6d8e157f1b",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
     repoUrl: "https://github.com/leftra123/incidentes_inacap_evaluacion_3",
     category: "movil"
   },
@@ -112,7 +102,7 @@ const proyectos: Proyecto[] = [
     description:
       "Aplicación hecha con Next.js que guarda información en la memoria caché del equipo. Permite operaciones CRUD sin base de datos y está desplegada en Vercel.",
     tech: ["Next.js", "JavaScript"],
-    image: "https://images.unsplash.com/photo-1584697964404-463f7b1b4b1f",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
     repoUrl: "https://github.com/leftra123/nextjs-context-crud-first",
     category: "fullstack"
   },
@@ -122,7 +112,7 @@ const proyectos: Proyecto[] = [
     description:
       "Aplicación de tareas hecha con React que guarda información en la memoria local. Desplegada con Docker.",
     tech: ["React", "JavaScript", "Docker"],
-    image: "https://images.unsplash.com/photo-1573164574391-1a4c9d6a75b0",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
     repoUrl: "https://github.com/leftra123/tasks",
     category: "frontend"
   },
@@ -132,7 +122,7 @@ const proyectos: Proyecto[] = [
     description:
       "Sistema ERP con Django en el backend y template en HTML, CSS y JavaScript en el frontend, diseñado para optimizar la gestión empresarial. Desplegado con Docker.",
     tech: ["Django", "HTML", "CSS", "JavaScript", "Docker"],
-    image: "", // sin imagen
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
     repoUrl: "https://github.com/patoag/erp-project",
     category: "fullstack"
   }
@@ -145,23 +135,18 @@ const categorias = [
   { id: "fullstack", label: "Full Stack" },
   { id: "datos", label: "Procesamiento de Datos" },
   { id: "hardware", label: "Hardware" },
-  { id: "movil", label: "Móvil" }
+  { id: "movil", label: "Móvil" },
 ]
 
 export function ProjectsSection() {
-  const [selectedCategory, setSelectedCategory] = useState("todos")
-  const [showAllProjects, setShowAllProjects] = useState(false)
-
-  // Filtrar proyectos según la categoría seleccionada
-  const proyectosFiltrados = proyectos.filter((proyecto) => {
-    if (selectedCategory === "todos") return true
-    return proyecto.category === selectedCategory
-  })
-
-  // Determinar cuántos proyectos mostrar: 4 o todos
-  const proyectosAMostrar = showAllProjects
-    ? proyectosFiltrados
-    : proyectosFiltrados.slice(0, 4)
+  const {
+    selectedCategory,
+    setSelectedCategory,
+    showAllProjects,
+    setShowAllProjects,
+    filteredProjects,
+    projectsToShow,
+  } = useProjects(proyectos)
 
   return (
     <section
@@ -172,7 +157,7 @@ export function ProjectsSection() {
         <h2 className="text-4xl font-bold mb-12">Proyectos</h2>
 
         {/* Botones de Categorías */}
-        <div className="flex gap-2 mb-8 overflow-x-auto pb-2">
+        <div className="flex flex-wrap gap-2 mb-8 pb-2 w-full max-w-full">
           {categorias.map((cat) => (
             <Button
               key={cat.id}
@@ -181,12 +166,12 @@ export function ProjectsSection() {
                 setSelectedCategory(cat.id)
                 setShowAllProjects(false)
               }}
-              className="whitespace-nowrap"
             >
               {cat.label}
             </Button>
           ))}
         </div>
+
 
         {/* Lista de Proyectos con animación */}
         <AnimatePresence mode="wait">
@@ -196,22 +181,29 @@ export function ProjectsSection() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch"
           >
-            {proyectosAMostrar.map((project) => (
+            {projectsToShow.map((project) => (
               <ProjectCard key={project.id} {...project} />
             ))}
           </motion.div>
+
         </AnimatePresence>
 
-        {/* Botón "Ver más" solo si hay más de 4 proyectos filtrados */}
-        {proyectosFiltrados.length > 4 && (
+        {/* Botón "Ver más" solo si hay más de 675 proyectos filtrados */}
+        {filteredProjects.length > 3 && (
           <div className="mt-8 flex justify-center">
-            <Button onClick={() => setShowAllProjects(!showAllProjects)}>
+            <button
+              className="text-primary
+              hover:text-primary-dark
+              focus:outline-none"
+              onClick={() => setShowAllProjects(!showAllProjects)}
+            >
               {showAllProjects ? "Ver menos" : "Ver más"}
-            </Button>
+            </button>
           </div>
         )}
+
       </div>
     </section>
   )

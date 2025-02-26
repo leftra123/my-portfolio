@@ -161,7 +161,7 @@ export function EducationSection() {
               {/* Aquí cada EducationCard se mostrará en un grid de 2 columnas */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <EducationCard
-                  institution="INACAP, Chile - Temuco"
+                  institution="INACAP Sede Temuco, Chile"
                   degree="Técnico de Nivel Superior Analista Programador"
                   period="2021 - 2022"
                   description="Titulado"
