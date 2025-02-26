@@ -125,8 +125,8 @@ export function Footer() {
               <p className="text-sm text-muted-foreground">
                 ¿Interesado en colaborar? Contáctame por correo:
                 <Button variant="link" className="h-auto p-0 mt-1" asChild>
-                  <a href="mailto:info@ericaguayo.dev" className="text-primary font-medium">
-                    info@ericaguayo.dev
+                  <a href="mailto:eric04232013@gmail.com" className="text-primary font-medium">
+                  eric04232013@gmail.com
                   </a>
                 </Button>
               </p>
