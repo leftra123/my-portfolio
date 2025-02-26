@@ -16,7 +16,7 @@ export default function Home() {
         <ThemeToggle />
       </div>  */}
       <HeroSection />
-      {/* <ExperienceSection /> */}
+      <ExperienceSection />
       {/* <EducationSection /> */}
       {/* <ProjectsSection /> */}
       {/* <AchievementsSection /> */}
