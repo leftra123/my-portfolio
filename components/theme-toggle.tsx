@@ -1,54 +1,40 @@
 "use client"
 
 import * as React from "react"
-import { Moon, Sun } from "lucide-react"
+import { Moon, Sun, Laptop } from "lucide-react"
 import { useTheme } from "next-themes"
-
 import { Button } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+
+const themes = ["light", "dark", "system"]
 
 export function ThemeToggle() {
-  const { theme, resolvedTheme, setTheme } = useTheme()
+  const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
 
-  // Se establece mounted para evitar errores de hidratación
   React.useEffect(() => {
     setMounted(true)
   }, [])
 
   if (!mounted) return null
 
-  // Usamos resolvedTheme para asegurarnos del tema actual
-  const currentTheme = resolvedTheme || theme
+  const cycleTheme = () => {
+    const currentIndex = themes.indexOf(theme || "system")
+    const nextIndex = (currentIndex + 1) % themes.length
+    setTheme(themes[nextIndex])
+  }
+
+  const renderIcon = () => {
+    if (theme === "dark")
+      return <Moon className="h-[1.2rem] w-[1.2rem] transition-all" />
+    if (theme === "light")
+      return <Sun className="h-[1.2rem] w-[1.2rem] transition-all" />
+    return <Laptop className="h-[1.2rem] w-[1.2rem] transition-all" />
+  }
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
-          {currentTheme === "dark" ? (
-            <Moon className="h-[1.2rem] w-[1.2rem] transition-all" />
-          ) : (
-            <Sun className="h-[1.2rem] w-[1.2rem] transition-all" />
-          )}
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          Claro
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Oscuro
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          Sistema
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <Button variant="outline" size="icon" onClick={cycleTheme}>
+      {renderIcon()}
+      <span className="sr-only">Cambiar tema</span>
+    </Button>
   )
 }
