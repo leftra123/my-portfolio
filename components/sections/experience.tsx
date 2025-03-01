@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react"
+import { Button } from "@/components/ui/button"
 import { Timeline, TimelineItem } from "@/components/ui/timeline"
 
 export function ExperienceSection() {
@@ -76,19 +77,20 @@ export function ExperienceSection() {
             />
           ))}
         </Timeline>
-        {experiencesToShow.length < experiences.length ? (
-          <div className="mt-8 flex justify-center">
-            <button onClick={() => setShowAll(true)} className="text-primary hover:text-primary/80 font-medium">
-              Ver más
-            </button>
-          </div>
-        ) : (
-          <div className="mt-8 flex justify-center">
-            <button onClick={() => setShowAll(false)} className="text-primary hover:text-primary/80 font-medium">
-              Ver menos
-            </button>
+        {experiences.length > 3 && (
+          <div className="flex justify-center mt-8">
+            <Button
+              onClick={() => setShowAll(!showAll)}
+              variant="outline"
+              className="bg-background/80 backdrop-blur-sm shadow-lg rounded-full px-6"
+            >
+              {showAll ? "Mostrar menos" : `Ver ${experiences.length - 3} más`}
+            </Button>
           </div>
         )}
+
+
+
       </div>
     </section>
   )
