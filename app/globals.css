@@ -3,11 +3,17 @@
 @tailwind utilities;
 
 html {
-  scroll-padding-top: var(--navbar-height);
+  scroll-padding-top: calc(var(--navbar-height) + 1rem);
+  scroll-behavior: smooth;
 }
 @media (max-width: 768px) {
-  html {
-    scroll-padding-top: 3.5rem;
+  section {
+    padding-top: calc(var(--navbar-height) + 1rem);
+    padding-bottom: 3rem;
+  }
+  
+  .view-more-button {
+    margin-top: 1.5rem;
   }
 }
 
@@ -37,7 +43,8 @@ html {
   }
   section {
     scroll-margin-top: var(--navbar-height);
-    padding-top: var(--navbar-height);
+    padding-top: calc(var(--navbar-height) + 2rem);
+    padding-bottom: 4rem;
   }
   nav {
     transition: all 0.3s ease;
@@ -46,6 +53,23 @@ html {
     background-color: hsl(var(--background)/0.98);
     box-shadow: 0 2px 8px hsl(var(--foreground)/0.05);
   }
+  .view-more-button {
+  position: relative;
+  z-index: 10;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1.5rem;
+  background-color: hsl(var(--background)/0.85);
+  backdrop-filter: blur(4px);
+  border-radius: 9999px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.view-more-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;

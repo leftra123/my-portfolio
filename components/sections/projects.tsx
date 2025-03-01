@@ -150,14 +150,14 @@ export function ProjectsSection() {
 
   return (
     <section
-      className="min-h-screen snap-start flex flex-col items-center justify-center py-20 bg-gradient-to-b from-background to-background/80"
+      className="min-h-screen flex flex-col items-center justify-center py-20 pb-28 bg-gradient-to-b from-background to-background/80"
       id="projects"
     >
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 w-full">
         <h2 className="text-4xl font-bold mb-12">Proyectos</h2>
 
         {/* Botones de Categorías */}
-        <div className="flex flex-wrap gap-2 mb-8 pb-2 w-full max-w-full">
+        <div className="flex flex-wrap gap-2 mb-8 pb-2 w-full max-w-full overflow-x-auto py-2">
           {categorias.map((cat) => (
             <Button
               key={cat.id}
@@ -166,6 +166,7 @@ export function ProjectsSection() {
                 setSelectedCategory(cat.id)
                 setShowAllProjects(false)
               }}
+              className="whitespace-nowrap"
             >
               {cat.label}
             </Button>
@@ -192,15 +193,14 @@ export function ProjectsSection() {
 
         {/* Botón "Ver más" solo si hay más de 675 proyectos filtrados */}
         {filteredProjects.length > 3 && (
-          <div className="mt-8 flex justify-center">
-            <button
-              className="text-primary
-              hover:text-primary-dark
-              focus:outline-none"
+          <div className="mt-12 mb-6 flex justify-center sticky -bottom-2">
+            <Button
+              variant="outline"
+              className="bg-background/80 backdrop-blur-sm shadow-lg rounded-full px-6"
               onClick={() => setShowAllProjects(!showAllProjects)}
             >
               {showAllProjects ? "Ver menos" : "Ver más"}
-            </button>
+            </Button>
           </div>
         )}
 

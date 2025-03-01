@@ -11,7 +11,7 @@ import { ScrollToTopButton } from "@/components/sections/ScrollToTopButton"
 
 export default function Home() {
   return (
-    <main className="snap-y snap-mandatory h-screen overflow-y-scroll">
+    <main className="h-full overflow-y-auto">
       <Navbar />
       {/* <div className="fixed top-4 right-4 z-50">
         <ThemeToggle />

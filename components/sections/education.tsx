@@ -1,6 +1,7 @@
 "use client"
 import { useState } from 'react'
 import { EducationCard } from "@/components/ui/education-card"
+import { Button } from "@/components/ui/button"
 import { CertificationBadge } from "@/components/ui/certification-badge"
 
 export function EducationSection() {
@@ -145,68 +146,71 @@ export function EducationSection() {
     : certifications.slice(0, 4)
 
 
-    return (
-      <section
-        className="min-h-screen snap-start flex flex-col items-center justify-center py-12"
-        id="educacion"
-      >
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12">Educación y Certificaciones</h2>
-  
-          {/* Contenedor que apila verticalmente ambas secciones */}
-          <div className="space-y-12">
-            {/* Sección Educación Formal */}
-            <div>
-              <h3 className="text-2xl font-semibold mb-6">Educación Formal</h3>
-              {/* Aquí cada EducationCard se mostrará en un grid de 2 columnas */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <EducationCard
-                  institution="INACAP Sede Temuco, Chile"
-                  degree="Técnico de Nivel Superior Analista Programador"
-                  period="2021 - 2022"
-                  description="Titulado"
-                />
-                <EducationCard
-                  institution="Liceo Pablo Neruda Temuco, Chile"
-                  degree="Educación Media"
-                  period="2012 - 2016"
-                  description="Titulado"
-                />
-                {/* ... si tuvieras más EducationCard, agrégalas aquí */}
-              </div>
+  return (
+    <section
+      className="min-h-screen snap-start flex flex-col items-center justify-center py-12"
+      id="educacion"
+    >
+      <div className="max-w-7xl mx-auto px-4">
+        <h2 className="text-4xl font-bold mb-12">Educación y Certificaciones</h2>
+
+        {/* Contenedor que apila verticalmente ambas secciones */}
+        <div className="space-y-12">
+          {/* Sección Educación Formal */}
+          <div>
+            <h3 className="text-2xl font-semibold mb-6">Educación Formal</h3>
+            {/* Aquí cada EducationCard se mostrará en un grid de 2 columnas */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <EducationCard
+                institution="INACAP Sede Temuco, Chile"
+                degree="Técnico de Nivel Superior Analista Programador"
+                period="2021 - 2022"
+                description="Titulado"
+              />
+              <EducationCard
+                institution="Liceo Pablo Neruda Temuco, Chile"
+                degree="Educación Media"
+                period="2012 - 2016"
+                description="Titulado"
+              />
+              {/* ... si tuvieras más EducationCard, agrégalas aquí */}
             </div>
-  
-            {/* Sección Especializaciones y Certificaciones */}
-            <div>
-              <h3 className="text-2xl font-semibold mb-6">
-                Especializaciones y Certificaciones
-              </h3>
-              {/* Cada CertificationBadge en un grid de 2 columnas */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {displayedCertifications.map((cert, index) => (
-                  <CertificationBadge
-                    key={cert.id || index}
-                    title={cert.title}
-                    issuer={cert.issuer}
-                    date={cert.date}
-                    verificationUrl={cert.verificationUrl}
-                    description={cert.description}
-                  />
-                ))}
-              </div>
-              {certifications.length > 4 && (
-                <button
+          </div>
+
+          {/* Sección Especializaciones y Certificaciones */}
+          <div>
+            <h3 className="text-2xl font-semibold mb-6">
+              Especializaciones y Certificaciones
+            </h3>
+            {/* Cada CertificationBadge en un grid de 2 columnas */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {displayedCertifications.map((cert, index) => (
+                <CertificationBadge
+                  key={cert.id || index}
+                  title={cert.title}
+                  issuer={cert.issuer}
+                  date={cert.date}
+                  verificationUrl={cert.verificationUrl}
+                  description={cert.description}
+                />
+              ))}
+            </div>
+            {certifications.length > 4 && (
+              <div className="flex justify-center mt-8">
+                <Button
                   onClick={() => setShowAllCerts(!showAllCerts)}
-                  className="mt-4 text-primary hover:text-primary/80 font-medium"
+                  variant="outline"
+                  className="bg-background/80 backdrop-blur-sm shadow-lg rounded-full px-6"
                 >
                   {showAllCerts
                     ? "Mostrar menos"
                     : `Ver ${certifications.length - 4} más`}
-                </button>
-              )}
-            </div>
+                </Button>
+              </div>
+            )}
           </div>
         </div>
-      </section>
-    )
-  }
+      </div>
+    </section>
+  )
+}
