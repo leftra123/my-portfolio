@@ -6,31 +6,37 @@ import { FiArrowUp } from "react-icons/fi"
 export function ScrollToTopButton() {
   const [showButton, setShowButton] = useState(false)
 
+  // Función para detectar scroll y mostrar/ocultar el botón
   useEffect(() => {
-    const hero = document.getElementById("hero")
-    if (!hero) return
+    const handleScroll = () => {
+      // Mostrar el botón cuando se ha desplazado más de 300px
+      setShowButton(window.scrollY > 300)
+    }
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        // Si el Hero no está en vista, mostramos el botón.
-        setShowButton(!entry.isIntersecting)
-      },
-      { threshold: 0.5 }
-    )
-
-    observer.observe(hero)
-    return () => observer.disconnect()
+    // Añadir event listener para el scroll
+    window.addEventListener("scroll", handleScroll)
+    
+    // Verificar posición inicial
+    handleScroll()
+    
+    // Limpiar event listener
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   if (!showButton) return null
 
+  // Función para manejar el scroll hacia arriba
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    })
+  }
+
   return (
     <button
-      onClick={() => {
-        const mainContainer = document.querySelector("main")
-        mainContainer?.scrollTo({ top: 0, behavior: "smooth" })
-      }}
-      className="fixed bottom-8 right-8 z-50 p-3 bg-primary text-white rounded-full shadow-lg hover:bg-primary/80 transition-all duration-300"
+      onClick={scrollToTop}
+      className="fixed bottom-8 right-8 z-50 p-3 bg-primary text-white rounded-full shadow-lg hover:bg-primary/80 transition-all duration-300 animate-fadeIn"
       aria-label="Volver arriba"
     >
       <FiArrowUp className="h-5 w-5" />
