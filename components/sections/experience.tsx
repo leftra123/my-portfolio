@@ -62,8 +62,8 @@ export function ExperienceSection() {
   const experiencesToShow = showAll ? experiences : experiences.slice(0, 3)
 
   return (
-    <section className="min-h-screen snap-start flex flex-col items-center justify-center py-12 bg-gradient-to-b from-background to-background/80" id="experiencia">
-      <div className="max-w-7xl mx-auto px-4">
+    <section className="min-h-screen flex flex-col items-center justify-center py-1 pb-28 bg-gradient-to-b from-background to-background/80" id="experiencia">
+      <div className="max-w-5xl mx-12 px-4">
         <h2 className="text-4xl font-bold mb-12">Experiencia Profesional</h2>
         <Timeline>
           {experiencesToShow.map((exp, index) => (

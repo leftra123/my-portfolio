@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { FiArrowUp } from "react-icons/fi"
 
 export function ScrollToTopButton() {
@@ -23,8 +24,6 @@ export function ScrollToTopButton() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  if (!showButton) return null
-
   // Función para manejar el scroll hacia arriba
   const scrollToTop = () => {
     window.scrollTo({
@@ -34,12 +33,22 @@ export function ScrollToTopButton() {
   }
 
   return (
-    <button
-      onClick={scrollToTop}
-      className="fixed bottom-8 right-8 z-50 p-3 bg-primary text-white rounded-full shadow-lg hover:bg-primary/80 transition-all duration-300 animate-fadeIn"
-      aria-label="Volver arriba"
-    >
-      <FiArrowUp className="h-5 w-5" />
-    </button>
+    <AnimatePresence>
+      {showButton && (
+        <motion.button
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.5 }}
+          transition={{ duration: 0.3 }}
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 md:bottom-10 md:right-10 lg:bottom-12 lg:right-12 z-50 p-3 bg-primary text-white rounded-full shadow-lg hover:bg-primary/80 hover:shadow-xl hover:scale-110 transition-all duration-300"
+          aria-label="Volver arriba"
+          whileHover={{ y: -5 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <FiArrowUp className="h-5 w-5" />
+        </motion.button>
+      )}
+    </AnimatePresence>
   )
 }

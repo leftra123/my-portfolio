@@ -1,5 +1,6 @@
 "use client"
 import { useState } from 'react'
+import { motion } from "framer-motion"
 import { EducationCard } from "@/components/ui/education-card"
 import { Button } from "@/components/ui/button"
 import { CertificationBadge } from "@/components/ui/certification-badge"
@@ -138,6 +139,13 @@ export function EducationSection() {
       date: "2022",
       id: "730bdfe5-70e8-4a23-a734-31ad922d0818",
       verificationUrl: "https://platzi.com/p/eric.x/curso/1937-python-basico/diploma/detalle/"
+    },
+    {
+      title: "Curso de Computación Básica",
+      issuer: "Platzi",
+      date: "2021",
+      id: "ef46ec4d-241f-428e-a40a-74ce9733eddb",
+      verificationUrl: "https://platzi.com/p/eric04232013/curso/1741-computacion-basica-2019/diploma/detalle/"
     }
   ].sort((a, b) => parseInt(b.date) - parseInt(a.date))
 
@@ -145,72 +153,112 @@ export function EducationSection() {
     ? certifications
     : certifications.slice(0, 4)
 
-
   return (
     <section
-      className="min-h-screen snap-start flex flex-col items-center justify-center py-12"
+      className="pt-24 pb-16 md:pt-28 md:pb-20 lg:py-24 bg-gradient-to-b from-background to-background/80"
       id="educacion"
     >
-      <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-4xl font-bold mb-12">Educación y Certificaciones</h2>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="container max-w-6xl mx-auto px-4 sm:px-6"
+      >
+        <motion.h2
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 md:mb-12"
+        >
+          Educación y Certificaciones
+        </motion.h2>
 
         {/* Contenedor que apila verticalmente ambas secciones */}
         <div className="space-y-12">
           {/* Sección Educación Formal */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
             <h3 className="text-2xl font-semibold mb-6">Educación Formal</h3>
             {/* Aquí cada EducationCard se mostrará en un grid de 2 columnas */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <EducationCard
-                institution="INACAP Sede Temuco, Chile"
-                degree="Técnico de Nivel Superior Analista Programador"
-                period="2021 - 2022"
-                description="Titulado"
-              />
-              <EducationCard
-                institution="Liceo Pablo Neruda Temuco, Chile"
-                degree="Educación Media"
-                period="2012 - 2016"
-                description="Titulado"
-              />
-              {/* ... si tuvieras más EducationCard, agrégalas aquí */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <EducationCard
+                  institution="INACAP Sede Temuco, Chile"
+                  degree="Técnico de Nivel Superior Analista Programador"
+                  period="2021 - 2022"
+                  description="Titulado"
+                />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                <EducationCard
+                  institution="Liceo Pablo Neruda Temuco, Chile"
+                  degree="Educación Media"
+                  period="2012 - 2016"
+                  description="Titulado"
+                />
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Sección Especializaciones y Certificaciones */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
             <h3 className="text-2xl font-semibold mb-6">
               Especializaciones y Certificaciones
             </h3>
             {/* Cada CertificationBadge en un grid de 2 columnas */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {displayedCertifications.map((cert, index) => (
-                <CertificationBadge
+                <motion.div
                   key={cert.id || index}
-                  title={cert.title}
-                  issuer={cert.issuer}
-                  date={cert.date}
-                  verificationUrl={cert.verificationUrl}
-                  description={cert.description}
-                />
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
+                >
+                  <CertificationBadge
+                    title={cert.title}
+                    issuer={cert.issuer}
+                    date={cert.date}
+                    verificationUrl={cert.verificationUrl}
+                    description={cert.description}
+                  />
+                </motion.div>
               ))}
             </div>
             {certifications.length > 4 && (
-              <div className="flex justify-center mt-8">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.8 }}
+                className="flex justify-center mt-10 md:mt-12 mb-4"
+              >
                 <Button
                   onClick={() => setShowAllCerts(!showAllCerts)}
                   variant="outline"
-                  className="bg-background/80 backdrop-blur-sm shadow-lg rounded-full px-6"
+                  className="bg-background/80 backdrop-blur-sm shadow-lg rounded-full px-6 hover:shadow-xl hover:bg-background/90 transition-all duration-300"
                 >
                   {showAllCerts
                     ? "Mostrar menos"
                     : `Ver ${certifications.length - 4} más`}
                 </Button>
-              </div>
+              </motion.div>
             )}
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

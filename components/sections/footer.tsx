@@ -23,12 +23,34 @@ export function Footer() {
     { label: 'Experiencia', href: '#experiencia' },
     { label: 'Educación', href: '#educacion' },
     { label: 'Proyectos', href: '#projects' },
+    { label: 'Logros', href: '#logros' },
     { label: 'Contacto', href: '#contacto' },
   ]
 
+  // Función para manejar el scroll
+  const handleScroll = (href: string) => {
+    const sectionId = href.split('#')[1]
+    const section = document.getElementById(sectionId)
+    
+    if (section) {
+      const offsetTop = section.getBoundingClientRect().top + window.pageYOffset
+      const navbarHeight = 80 // ajustar según la altura de tu navbar
+      
+      window.scrollTo({
+        top: offsetTop - navbarHeight,
+        behavior: 'smooth'
+      })
+    }
+  }
+
   return (
-    <footer className="min-h-screen snap-start relative bg-gradient-to-b from-background to-background/95 border-t border-border/40 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-6 py-16">
+    <footer className="py-16 md:py-20 lg:py-24 bg-gradient-to-b from-background to-background/80 border-t border-border/10">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="container max-w-5xl mx-auto px-4 sm:px-6"
+      >
         {/* Logo y descripción centrados para mejorar la estética */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -59,17 +81,24 @@ export function Footer() {
             </h3>
             <div className="flex flex-wrap gap-3">
               {socialLinks.map((item, index) => (
-                <Button
+                <motion.div
                   key={index}
-                  variant="outline"
-                  size="icon"
-                  className="h-10 w-10 rounded-full border-border/50 bg-background/50 backdrop-blur-sm hover:bg-primary/10 hover:border-primary transition-all duration-300"
-                  asChild
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.1 * index }}
                 >
-                  <Link href={item.link} target="_blank" rel="noopener" aria-label={item.label}>
-                    {item.icon}
-                  </Link>
-                </Button>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="h-10 w-10 rounded-full border-border/50 bg-background/50 backdrop-blur-sm hover:bg-primary/10 hover:border-primary transition-all duration-300"
+                    asChild
+                  >
+                    <Link href={item.link} target="_blank" rel="noopener" aria-label={item.label}>
+                      {item.icon}
+                    </Link>
+                  </Button>
+                </motion.div>
               ))}
             </div>
           </motion.div>
@@ -87,14 +116,15 @@ export function Footer() {
             </h3>
             <nav className="grid grid-cols-2 gap-2">
               {navLinks.map((item, index) => (
-                <Link
+                <Button 
                   key={index}
-                  href={item.href}
-                  className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:translate-x-1 transform inline-flex items-center"
+                  variant="link" 
+                  className="p-0 h-auto justify-start text-muted-foreground hover:text-primary"
+                  onClick={() => handleScroll(item.href)}
                 >
                   <span className="text-primary mr-2">•</span>
                   {item.label}
-                </Link>
+                </Button>
               ))}
             </nav>
           </motion.div>
@@ -149,9 +179,7 @@ export function Footer() {
           <p className="mb-1">© {currentYear} Eric Aguayo Quintriqueo. Todos los derechos reservados.</p>
           <p>Desarrollado con Next.js, Tailwind CSS y Vercel</p>
         </motion.div>
-
-        
-      </div>
+      </motion.div>
     </footer>
   )
 }

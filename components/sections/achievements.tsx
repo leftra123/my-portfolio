@@ -81,11 +81,11 @@ export function AchievementsSection() {
   return (
     <section
       id="logros"
-      className="min-h-screen snap-start flex flex-col items-center justify-center py-20 bg-gradient-to-b from-background to-background/80"
+      className="pt-24 pb-16 md:pt-28 md:pb-20 lg:py-24 bg-gradient-to-b from-background to-background/80"
     >
-      <div className="max-w-7xl mx-auto px-4 w-full">
+      <div className="container max-w-5xl mx-auto px-4 sm:px-6 w-full">
         <motion.h2 
-          className="text-4xl font-bold mb-6 text-center"
+          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-center"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

@@ -150,29 +150,46 @@ export function ProjectsSection() {
 
   return (
     <section
-      className="min-h-screen flex flex-col items-center justify-center py-20 pb-28 bg-gradient-to-b from-background to-background/80"
+      className="pt-24 pb-16 md:pt-28 md:pb-20 lg:py-24 bg-gradient-to-b from-background to-background/80"
       id="projects"
     >
-      <div className="max-w-7xl mx-auto px-4 w-full">
-        <h2 className="text-4xl font-bold mb-12">Proyectos</h2>
+      <div className="container max-w-5xl mx-auto px-4 sm:px-6 w-full">
+        <motion.h2 
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 md:mb-12"
+        >
+          Proyectos
+        </motion.h2>
 
         {/* Botones de Categorías */}
-        <div className="flex flex-wrap gap-2 mb-8 pb-2 w-full max-w-full overflow-x-auto py-2">
-          {categorias.map((cat) => (
-            <Button
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="flex flex-wrap gap-2 mb-8 pb-2 w-full max-w-full overflow-x-auto py-2"
+        >
+          {categorias.map((cat, index) => (
+            <motion.div
               key={cat.id}
-              variant={selectedCategory === cat.id ? "default" : "outline"}
-              onClick={() => {
-                setSelectedCategory(cat.id)
-                setShowAllProjects(false)
-              }}
-              className="whitespace-nowrap"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
             >
-              {cat.label}
-            </Button>
+              <Button
+                variant={selectedCategory === cat.id ? "default" : "outline"}
+                onClick={() => {
+                  setSelectedCategory(cat.id)
+                  setShowAllProjects(false)
+                }}
+                className="whitespace-nowrap"
+              >
+                {cat.label}
+              </Button>
+            </motion.div>
           ))}
-        </div>
-
+        </motion.div>
 
         {/* Lista de Proyectos con animación */}
         <AnimatePresence mode="wait">
@@ -188,22 +205,25 @@ export function ProjectsSection() {
               <ProjectCard key={project.id} {...project} />
             ))}
           </motion.div>
-
         </AnimatePresence>
 
-        {/* Botón "Ver más" solo si hay más de 675 proyectos filtrados */}
+        {/* Botón "Ver más" */}
         {filteredProjects.length > 3 && (
-          <div className="mt-12 mb-6 flex justify-center sticky -bottom-2">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex justify-center mt-10 md:mt-12 mb-4"
+          >
             <Button
               variant="outline"
-              className="bg-background/80 backdrop-blur-sm shadow-lg rounded-full px-6"
+              className="bg-background/80 backdrop-blur-sm shadow-lg rounded-full px-6 hover:shadow-xl hover:bg-background/90 transition-all duration-300"
               onClick={() => setShowAllProjects(!showAllProjects)}
             >
-              {showAllProjects ? "Ver menos" : "Ver más"}
+              {showAllProjects ? "Ver menos" : `Ver ${filteredProjects.length - 3} más`}
             </Button>
-          </div>
+          </motion.div>
         )}
-
       </div>
     </section>
   )
