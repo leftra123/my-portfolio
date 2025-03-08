@@ -1,12 +1,11 @@
 "use client"
 
-import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { TypewriterEffect } from "@/components/ui/typewriter-effect"
+import { motion } from "framer-motion"
 import Image from "next/image"
-import React from "react"
 // Importamos React Icons
-import { FaGithub, FaLinkedinIn, FaInstagram, FaWhatsapp, FaFileAlt } from "react-icons/fa"
+import { FaFileAlt, FaGithub, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa"
 
 const socialLinks = [
   { icon: <FaGithub className="w-5 h-5" />, link: 'https://github.com/leftra123', label: 'Github' },

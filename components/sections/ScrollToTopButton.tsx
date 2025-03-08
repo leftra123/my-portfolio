@@ -1,7 +1,7 @@
 "use client"
 
+import { AnimatePresence, motion } from "framer-motion"
 import { useEffect, useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
 import { FiArrowUp } from "react-icons/fi"
 
 export function ScrollToTopButton() {
@@ -16,10 +16,10 @@ export function ScrollToTopButton() {
 
     // Añadir event listener para el scroll
     window.addEventListener("scroll", handleScroll)
-    
+
     // Verificar posición inicial
     handleScroll()
-    
+
     // Limpiar event listener
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])

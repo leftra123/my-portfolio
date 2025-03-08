@@ -1,15 +1,15 @@
 "use client"
 
-import { useState, useRef } from "react"
-import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
 import emailjs from '@emailjs/browser'
+import { motion } from "framer-motion"
+import { useRef, useState } from "react"
 // Importamos React Icons
-import { FaGithub, FaLinkedinIn, FaEnvelope, FaWhatsapp, FaPaperPlane, FaSpinner, FaInstagram } from "react-icons/fa"
 import { Card, CardContent } from "@/components/ui/card"
+import { FaEnvelope, FaGithub, FaInstagram, FaLinkedinIn, FaPaperPlane, FaSpinner, FaWhatsapp } from "react-icons/fa"
 
 export default function ContactSection() {
   const form = useRef<HTMLFormElement>(null)
@@ -22,7 +22,7 @@ export default function ContactSection() {
     setLoading(true)
     setError("")
 
-    if (!form.current || 
+    if (!form.current ||
       !process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ||
       !process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ||
       !process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY) {
@@ -37,29 +37,29 @@ export default function ContactSection() {
       form.current,
       process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
     )
-    .then(() => {
-      setSuccess(true)
-      form.current?.reset()
-      setTimeout(() => setSuccess(false), 5000)
-    })
-    .catch((err) => {
-      setError('Error al enviar el mensaje. Por favor inténtalo nuevamente.')
-      console.error('EmailJS Error:', err)
-    })
-    .finally(() => setLoading(false))
+      .then(() => {
+        setSuccess(true)
+        form.current?.reset()
+        setTimeout(() => setSuccess(false), 5000)
+      })
+      .catch((err) => {
+        setError('Error al enviar el mensaje. Por favor inténtalo nuevamente.')
+        console.error('EmailJS Error:', err)
+      })
+      .finally(() => setLoading(false))
   }
 
   // Contactos directos
   const contactMethods = [
-    { 
-      icon: <FaEnvelope className="h-6 w-6 text-primary" />, 
-      title: "Email", 
+    {
+      icon: <FaEnvelope className="h-6 w-6 text-primary" />,
+      title: "Email",
       value: "eric04232013@gmail.com",
       href: "mailto:eric04232013@gmail.com"
     },
-    { 
-      icon: <FaWhatsapp className="h-6 w-6 text-primary" />, 
-      title: "WhatsApp", 
+    {
+      icon: <FaWhatsapp className="h-6 w-6 text-primary" />,
+      title: "WhatsApp",
       value: "+56 9 3051 8083",
       href: "https://wa.me/+56930518083"
     }
@@ -74,13 +74,13 @@ export default function ContactSection() {
 
   return (
     <section id="contacto" className="min-h-screen flex flex-col items-center justify-center py-1 pb-28 bg-gradient-to-b from-background to-background/80">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         className="max-w-4xl mx-auto px-4 w-full"
       >
         <div className=" mb-12">
-          <motion.h2 
+          <motion.h2
             className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 relative inline-block"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -117,8 +117,8 @@ export default function ContactSection() {
                     </div>
                     <div>
                       <h4 className="text-sm font-medium text-muted-foreground">{method.title}</h4>
-                      <a 
-                        href={method.href} 
+                      <a
+                        href={method.href}
                         className="text-foreground hover:text-primary transition-colors duration-200"
                       >
                         {method.value}
@@ -156,7 +156,7 @@ export default function ContactSection() {
           >
             <Card className="backdrop-blur-sm border border-border/40 bg-card/30 p-6">
               <CardContent className="p-0">
-                <form 
+                <form
                   ref={form}
                   onSubmit={sendEmail}
                   className="space-y-6"
@@ -199,8 +199,8 @@ export default function ContactSection() {
                     />
                   </div>
 
-                  <Button 
-                    type="submit" 
+                  <Button
+                    type="submit"
                     className="w-full bg-primary/90 hover:bg-primary transition-all duration-300 flex items-center justify-center"
                     disabled={loading}
                   >

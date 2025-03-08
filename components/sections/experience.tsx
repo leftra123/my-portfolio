@@ -1,7 +1,7 @@
 "use client"
-import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Timeline, TimelineItem } from "@/components/ui/timeline"
+import { useState } from "react"
 
 export function ExperienceSection() {
   const [showAll, setShowAll] = useState(false)

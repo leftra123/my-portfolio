@@ -1,9 +1,9 @@
 "use client"
-import { useState } from 'react'
-import { motion } from "framer-motion"
-import { EducationCard } from "@/components/ui/education-card"
 import { Button } from "@/components/ui/button"
 import { CertificationBadge } from "@/components/ui/certification-badge"
+import { EducationCard } from "@/components/ui/education-card"
+import { motion } from "framer-motion"
+import { useState } from 'react'
 
 export function EducationSection() {
   const [showAllCerts, setShowAllCerts] = useState(false)

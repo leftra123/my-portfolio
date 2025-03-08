@@ -1,7 +1,7 @@
 "use client"
 
-import { Code, Users, Award, Coffee, Star, BookOpen } from "lucide-react"
 import { motion } from "framer-motion"
+import { Award, BookOpen, Code, Coffee, Star, Users } from "lucide-react"
 
 export function AchievementsSection() {
   const achievements = [
@@ -66,25 +66,25 @@ export function AchievementsSection() {
 
   const countAnimation = {
     hidden: { scale: 0.8, opacity: 0 },
-    show: { 
-      scale: 1, 
-      opacity: 1, 
-      transition: { 
+    show: {
+      scale: 1,
+      opacity: 1,
+      transition: {
         type: "spring",
         stiffness: 100,
         delay: 0.2,
         duration: 0.8
-      } 
+      }
     }
   }
-// className="pt-24 pb-16 md:pt-28 md:pb-20 lg:py-24 bg-gradient-to-b from-background to-background/80"
+  // className="pt-24 pb-16 md:pt-28 md:pb-20 lg:py-24 bg-gradient-to-b from-background to-background/80"
   return (
     <section
       id="logros"
       className="pt-24 pb-16 md:pt-28 md:pb-20 lg:py-24 bg-gradient-to-b from-background to-background/80"
     >
       <div className="container max-w-4xl mx-auto px-4 sm:px-6 w-full">
-        <motion.h2 
+        <motion.h2
           className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -93,7 +93,7 @@ export function AchievementsSection() {
         >
           Logros <span className="text-primary">Destacados</span>
         </motion.h2>
-        
+
         <motion.p
           className="text-muted-foreground max-w-2xl mb-12"
           initial={{ opacity: 0 }}
@@ -104,7 +104,7 @@ export function AchievementsSection() {
           Un vistazo a mi trayectoria profesional y los hitos alcanzados a lo largo de mi carrera.
         </motion.p>
 
-        <motion.div 
+        <motion.div
           variants={container}
           initial="hidden"
           whileInView="show"
@@ -112,23 +112,23 @@ export function AchievementsSection() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {achievements.map((achievement, index) => (
-            <motion.div 
-              key={index} 
+            <motion.div
+              key={index}
               variants={item}
               className={`relative overflow-hidden rounded-xl p-6 border border-primary/10 bg-gradient-to-br ${achievement.color} backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1`}
             >
               <div className="absolute -bottom-6 -right-6 opacity-10 text-primary">
                 {achievement.icon}
               </div>
-              
+
               <div className="flex items-start space-x-4">
                 <div className="p-3 rounded-lg bg-primary/10 text-primary">
                   {achievement.icon}
                 </div>
-                
+
                 <div className="flex flex-col">
-                  <motion.p 
-                    variants={countAnimation} 
+                  <motion.p
+                    variants={countAnimation}
                     className="text-3xl font-bold text-primary"
                   >
                     {achievement.count}

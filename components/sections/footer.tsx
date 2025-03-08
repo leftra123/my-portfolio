@@ -1,9 +1,9 @@
 "use client"
 
+import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { FaGithub, FaLinkedinIn, FaTwitter, FaInstagram, FaWhatsapp, FaFileAlt } from "react-icons/fa"
+import { FaFileAlt, FaGithub, FaInstagram, FaLinkedinIn, FaTwitter, FaWhatsapp } from "react-icons/fa"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -31,11 +31,11 @@ export function Footer() {
   const handleScroll = (href: string) => {
     const sectionId = href.split('#')[1]
     const section = document.getElementById(sectionId)
-    
+
     if (section) {
       const offsetTop = section.getBoundingClientRect().top + window.pageYOffset
       const navbarHeight = 80 // ajustar según la altura de tu navbar
-      
+
       window.scrollTo({
         top: offsetTop - navbarHeight,
         behavior: 'smooth'
@@ -45,7 +45,7 @@ export function Footer() {
 
   return (
     <footer className="py-16 md:py-20 lg:py-24 bg-gradient-to-b from-background to-background/80 border-t border-border/10">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
@@ -116,9 +116,9 @@ export function Footer() {
             </h3>
             <nav className="grid grid-cols-2 gap-2">
               {navLinks.map((item, index) => (
-                <Button 
+                <Button
                   key={index}
-                  variant="link" 
+                  variant="link"
                   className="p-0 h-auto justify-start text-muted-foreground hover:text-primary"
                   onClick={() => handleScroll(item.href)}
                 >
@@ -155,7 +155,7 @@ export function Footer() {
                 ¿Interesado en colaborar? Contáctame por correo:
                 <Button variant="link" className="h-auto p-0 mt-1" asChild>
                   <a href="mailto:eric04232013@gmail.com" className="text-primary font-medium">
-                  eric04232013@gmail.com
+                    eric04232013@gmail.com
                   </a>
                 </Button>
               </p>

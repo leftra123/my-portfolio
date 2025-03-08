@@ -1,9 +1,9 @@
 "use client"
 
-import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ProjectCard } from "@/components/ui/project-card"
-import { useProjects, Proyecto } from "@/hooks/useProjects"
+import { Proyecto, useProjects } from "@/hooks/useProjects"
+import { AnimatePresence, motion } from "framer-motion"
 
 const proyectos: Proyecto[] = [
   {
@@ -147,14 +147,14 @@ export function ProjectsSection() {
     filteredProjects,
     projectsToShow,
   } = useProjects(proyectos)
-// className="pt-24 pb-16 md:pt-28 md:pb-20 lg:py-24 bg-gradient-to-b from-background to-background/80"
+  // className="pt-24 pb-16 md:pt-28 md:pb-20 lg:py-24 bg-gradient-to-b from-background to-background/80"
   return (
     <section
       className="pt-24 pb-16 md:pt-28 md:pb-20 lg:py-24 bg-gradient-to-b from-background to-background/80"
       id="projects"
     >
       <div className="container max-w-4xl mx-auto px-4 sm:px-6 w-full">
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -164,7 +164,7 @@ export function ProjectsSection() {
         </motion.h2>
 
         {/* Botones de Categorías */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -209,7 +209,7 @@ export function ProjectsSection() {
 
         {/* Botón "Ver más" */}
         {filteredProjects.length > 3 && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}

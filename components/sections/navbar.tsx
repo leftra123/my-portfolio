@@ -1,11 +1,11 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Menu, X, Code2, ChevronRight } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { AnimatePresence, motion } from "framer-motion"
+import { ChevronRight, Code2, Menu, X } from "lucide-react"
+import { useCallback, useEffect, useState } from "react"
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
