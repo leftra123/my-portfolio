@@ -23,31 +23,31 @@ export function Navbar() {
     { name: "Logros", href: "#logros" },
     { name: "Contacto", href: "#contacto", highlight: true }
   ]
-  
+
   // Efecto para detectar scroll y cambiar apariencia del navbar
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY
-      
+
       // Cambiar estado cuando se ha scrolleado más de 50px
       setIsScrolled(scrollPosition > 50)
-      
+
       // Detectar si se ha scrolleado más allá de la sección hero
       const heroSection = document.getElementById('hero')
       if (heroSection) {
         const heroHeight = heroSection.offsetHeight
         const heroBottom = heroSection.offsetTop + heroHeight
         setHasScrolledBeyondHero(scrollPosition > heroBottom - 200)
-        
+
         // Calcular el progreso del scroll como porcentaje para transiciones suaves
         const scrollPercentage = Math.min(scrollPosition / heroHeight, 1)
         setScrollProgress(scrollPercentage)
       }
     }
-    
+
     window.addEventListener("scroll", handleScroll)
     handleScroll() // Verificar estado inicial
-    
+
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -70,7 +70,7 @@ export function Navbar() {
       },
       { threshold: 0.3 }
     )
-    
+
     // Observamos todas las secciones
     navItems.forEach(({ href }) => {
       const sectionId = href.split('#')[1]
@@ -79,7 +79,7 @@ export function Navbar() {
         observer.observe(section)
       }
     })
-    
+
     return () => observer.disconnect()
   }, [])
 
@@ -87,58 +87,58 @@ export function Navbar() {
   const handleScroll = useCallback((href: string) => {
     const sectionId = href.split('#')[1]
     const section = document.getElementById(sectionId)
-    
+
     if (section) {
       // Obtener la posición actual del scroll
       const offsetTop = section.getBoundingClientRect().top + window.pageYOffset
-      
-      // Altura del navbar (ajustable según tu diseño)
+
+      // Altura del navbar 
       const navbarHeight = isScrolled ? 64 : 80 // h-16 (64px) cuando scrolled, h-20 (80px) cuando no
-      
+
       // Scroll a la posición calculada
       window.scrollTo({
         top: offsetTop - navbarHeight,
         behavior: 'smooth'
       })
     }
-    
+
     setIsMenuOpen(false)
   }, [isScrolled])
 
   // Determinar la apariencia del navbar
   const navbarBackground = cn(
     "fixed w-full top-0 z-50 transition-all duration-500",
-    isScrolled 
-      ? "border-b shadow-md" 
-      : hasScrolledBeyondHero 
-        ? "border-b border-border/10" 
+    isScrolled
+      ? "border-b shadow-md"
+      : hasScrolledBeyondHero
+        ? "border-b border-border/10"
         : "",
-    isScrolled || hasScrolledBeyondHero 
-      ? "bg-background/90 backdrop-blur-lg backdrop-saturate-150" 
+    isScrolled || hasScrolledBeyondHero
+      ? "bg-background/90 backdrop-blur-lg backdrop-saturate-150"
       : "bg-transparent"
   )
 
   // Altura y padding del navbar basada en el scroll
   const navbarHeight = cn(
     "transition-all duration-300",
-    isScrolled 
-      ? "h-16 py-2" 
+    isScrolled
+      ? "h-16 py-2"
       : "h-20 py-4 md:h-24 md:py-6"
   )
-  
+
   // Efecto de padding horizontal dinámico
   const containerPadding = cn(
     "transition-all duration-300",
-    isScrolled 
-      ? "px-4 sm:px-6 lg:px-8" 
+    isScrolled
+      ? "px-4 sm:px-6 lg:px-8"
       : "px-5 sm:px-8 lg:px-10"
   )
 
   return (
     <nav className={cn(navbarBackground, navbarHeight)}>
-      <div className={cn("max-w-7xl mx-auto h-full flex items-center justify-between", containerPadding)}>
+      <div className={cn("max-w-4xl mx-auto h-full flex items-center justify-between", containerPadding)}>
         {/* Logo */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4 }}
@@ -153,7 +153,7 @@ export function Navbar() {
               whileHover={{ scale: 1.05 }}
             >
               <span className={cn(
-                "font-bold bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent transition-all duration-300",
+                "font-bold bg-gradient-to-r from-primary to-blue-700 bg-clip-text text-transparent transition-all duration-300",
                 isScrolled ? "text-sm sm:text-base" : "text-base sm:text-lg md:text-xl"
               )}>
                 @leftra123
@@ -165,7 +165,7 @@ export function Navbar() {
             </motion.div>
             {activeSection === "hero" && (
               <motion.div
-                className="absolute -bottom-1 left-0 w-full h-[3px] bg-gradient-to-r from-primary/80 via-blue-500/80 to-blue-600/80 rounded-full"
+                // className="absolute -bottom-1 left-0 w-full h-[3px] bg-gradient-to-r from-primary/80 via-blue-500/80 to-blue-600/80 rounded-full"
                 layoutId="logoActive"
                 transition={{ type: "spring", stiffness: 300 }}
               />
@@ -190,12 +190,12 @@ export function Navbar() {
                     "relative font-medium px-3 rounded-lg transition-all duration-300",
                     isScrolled ? "text-sm py-2" : "text-sm md:text-base py-2.5",
                     item.highlight && !isActive ? "border-primary/40 text-primary hover:bg-primary/10" : "",
-                    !item.highlight && isActive 
-                      ? "text-primary" 
+                    !item.highlight && isActive
+                      ? "text-primary"
                       : !item.highlight && cn(
-                          "text-muted-foreground hover:text-foreground hover:bg-primary/5",
-                          (!isScrolled && !hasScrolledBeyondHero) ? "hover:bg-white/10" : ""
-                        )
+                        "text-muted-foreground hover:text-foreground hover:bg-primary/5",
+                        (!isScrolled && !hasScrolledBeyondHero) ? "hover:bg-white/10" : ""
+                      )
                   )}
                   onClick={() => handleScroll(item.href)}
                 >
@@ -275,7 +275,7 @@ export function Navbar() {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="md:hidden absolute w-full left-0 top-16 shadow-lg border-t z-50 overflow-hidden backdrop-blur-xl backdrop-saturate-150 bg-background/95"
           >
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2, delay: 0.1 }}
@@ -296,7 +296,7 @@ export function Navbar() {
                       className={cn(
                         "w-full justify-between text-base h-12 px-4 rounded-lg",
                         item.highlight && !isActive ? "border-primary/40 text-primary" : "",
-                        !item.highlight && isActive 
+                        !item.highlight && isActive
                           ? "bg-primary/10 text-primary font-medium"
                           : !item.highlight && "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
                       )}
@@ -304,7 +304,7 @@ export function Navbar() {
                     >
                       <span>{item.name}</span>
                       <ChevronRight className={cn(
-                        "h-4 w-4 transition-transform", 
+                        "h-4 w-4 transition-transform",
                         isActive ? "text-primary rotate-90" : "text-muted-foreground"
                       )} />
                     </Button>
@@ -318,7 +318,7 @@ export function Navbar() {
 
       {/* Línea de progreso sutil */}
       {isScrolled && (
-        <motion.div 
+        <motion.div
           className="absolute left-0 bottom-0 h-[2px] bg-gradient-to-r from-primary/30 via-primary/60 to-blue-600/30"
           style={{ width: `${scrollProgress * 100}%` }}
           initial={{ opacity: 0 }}

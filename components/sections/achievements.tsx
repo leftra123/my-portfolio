@@ -7,14 +7,14 @@ export function AchievementsSection() {
   const achievements = [
     {
       icon: <Code className="w-10 h-10" />,
-      count: "5+",
+      count: "3+",
       text: "Años",
       subtext: "de Experiencia",
       color: "from-blue-500/20 to-blue-600/20"
     },
     {
       icon: <Users className="w-10 h-10" />,
-      count: "10+",
+      count: "3+",
       text: "Proyectos",
       subtext: "en Producción",
       color: "from-purple-500/20 to-purple-600/20"
@@ -77,15 +77,15 @@ export function AchievementsSection() {
       } 
     }
   }
-
+// className="pt-24 pb-16 md:pt-28 md:pb-20 lg:py-24 bg-gradient-to-b from-background to-background/80"
   return (
     <section
       id="logros"
       className="pt-24 pb-16 md:pt-28 md:pb-20 lg:py-24 bg-gradient-to-b from-background to-background/80"
     >
-      <div className="container max-w-5xl mx-auto px-4 sm:px-6 w-full">
+      <div className="container max-w-4xl mx-auto px-4 sm:px-6 w-full">
         <motion.h2 
-          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-center"
+          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -95,7 +95,7 @@ export function AchievementsSection() {
         </motion.h2>
         
         <motion.p
-          className="text-muted-foreground max-w-2xl mx-auto text-center mb-12"
+          className="text-muted-foreground max-w-2xl mb-12"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

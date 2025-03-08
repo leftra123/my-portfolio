@@ -6,12 +6,12 @@ import { TypewriterEffect } from "@/components/ui/typewriter-effect"
 import Image from "next/image"
 import React from "react"
 // Importamos React Icons
-import { FaGithub, FaLinkedinIn, FaTwitter, FaInstagram, FaWhatsapp, FaFileAlt } from "react-icons/fa"
+import { FaGithub, FaLinkedinIn, FaInstagram, FaWhatsapp, FaFileAlt } from "react-icons/fa"
 
 const socialLinks = [
   { icon: <FaGithub className="w-5 h-5" />, link: 'https://github.com/leftra123', label: 'Github' },
   { icon: <FaLinkedinIn className="w-5 h-5" />, link: 'https://linkedin.com/in/eric-aguayo-quintriqueo-b36783220', label: 'LinkedIn' },
-  { icon: <FaTwitter className="w-5 h-5" />, link: 'https://x.com/leftra123', label: 'X (Twitter)' },
+  // { icon: <FaTwitter className="w-5 h-5" />, link: 'https://x.com/leftra123', label: 'X (Twitter)' },
   { icon: <FaInstagram className="w-5 h-5" />, link: 'https://www.instagram.com/analema.x/', label: 'Instagram' },
   { icon: <FaWhatsapp className="w-5 h-5" />, link: 'https://wa.me/+56930518083', label: 'WhatsApp' },
   { icon: <FaFileAlt className="w-5 h-5" />, link: 'https://drive.google.com/file/d/1aqNROgnTe8nnH6YoIJ__5t6XxpRtuVI9/view', label: 'CV en PDF' },
@@ -24,7 +24,7 @@ function scrollToSection(id: string) {
 
 export function HeroSection() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center py-20 pb-28 md:pb-20 bg-gradient-to-b from-background to-background/80" id="hero">
+    <div className="pt-24 pb-16 md:pt-28 md:pb-20 lg:py-24 bg-gradient-to-b from-background to-background/80" id="hero">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -49,7 +49,7 @@ export function HeroSection() {
 
         {/* Títulos */}
         <motion.h1
-          className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 px-2 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6text-3xl mb-4 px-2 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}

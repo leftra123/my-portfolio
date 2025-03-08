@@ -60,11 +60,11 @@ export function ExperienceSection() {
 
   // Se muestran las 3 primeras experiencias a menos que se active "Ver más"
   const experiencesToShow = showAll ? experiences : experiences.slice(0, 3)
-
+  // className="pt-24 pb-16 md:pt-28 md:pb-20 lg:py-24 bg-gradient-to-b from-background to-background/80"
   return (
     <section className="min-h-screen flex flex-col items-center justify-center py-1 pb-28 bg-gradient-to-b from-background to-background/80" id="experiencia">
-      <div className="max-w-5xl mx-12 px-4">
-        <h2 className="text-4xl font-bold mb-12">Experiencia Profesional</h2>
+      <div className="max-w-4xl mx-12 px-4">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Experiencia Profesional</h2>
         <Timeline>
           {experiencesToShow.map((exp, index) => (
             <TimelineItem

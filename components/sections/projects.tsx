@@ -147,18 +147,18 @@ export function ProjectsSection() {
     filteredProjects,
     projectsToShow,
   } = useProjects(proyectos)
-
+// className="pt-24 pb-16 md:pt-28 md:pb-20 lg:py-24 bg-gradient-to-b from-background to-background/80"
   return (
     <section
       className="pt-24 pb-16 md:pt-28 md:pb-20 lg:py-24 bg-gradient-to-b from-background to-background/80"
       id="projects"
     >
-      <div className="container max-w-5xl mx-auto px-4 sm:px-6 w-full">
+      <div className="container max-w-4xl mx-auto px-4 sm:px-6 w-full">
         <motion.h2 
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 md:mb-12"
+          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
         >
           Proyectos
         </motion.h2>

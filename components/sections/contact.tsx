@@ -73,22 +73,22 @@ export default function ContactSection() {
   ]
 
   return (
-    <section id="contacto" className="min-h-screen snap-start flex flex-col items-center justify-center py-20 bg-gradient-to-b from-background via-background/95 to-background/90">
+    <section id="contacto" className="min-h-screen flex flex-col items-center justify-center py-1 pb-28 bg-gradient-to-b from-background to-background/80">
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        className="max-w-6xl mx-auto px-4 w-full"
+        className="max-w-4xl mx-auto px-4 w-full"
       >
-        <div className="text-center mb-12">
+        <div className=" mb-12">
           <motion.h2 
-            className="text-4xl font-bold mb-4 relative inline-block"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 relative inline-block"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
             Contáctame
             <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-primary/80"></span>
           </motion.h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
+          <p className="text-muted-foreground max-l-xl mx-auto">
             ¿Tienes un proyecto en mente? Hablemos sobre cómo puedo ayudarte a hacerlo realidad.
           </p>
         </div>
