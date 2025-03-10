@@ -10,6 +10,13 @@ export function EducationSection() {
 
   const certifications = [
     {
+      title: "Fundamentos profesionales de IA generativa, por Microsoft y LinkedIn",
+      issuer: "Microsoft y LinkedIn",
+      date: "2025",
+      id: "f2ad4481ce72e96bc73170c6a3cf8f1fc66ebe26207e1e183f9c2ec08d5ce19e",
+      verificationUrl: "https://www.linkedin.com/learning/certificates/f2ad4481ce72e96bc73170c6a3cf8f1fc66ebe26207e1e183f9c2ec08d5ce19e"
+    },
+    {
       title: "Educación Financiera para la Ciudadanía",
       issuer: "Universidad de Chile",
       date: "2025",
