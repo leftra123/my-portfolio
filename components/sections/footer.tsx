@@ -3,16 +3,15 @@
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { FaFileAlt, FaGithub, FaInstagram, FaLinkedinIn, FaTwitter, FaWhatsapp } from "react-icons/fa"
+import { FaFileAlt, FaGithub, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
 
-  // Array de iconos sociales para mantener el código DRY
+  // Array de iconos sociales
   const socialLinks = [
     { icon: <FaGithub className="w-5 h-5" />, link: 'https://github.com/leftra123', label: 'GitHub' },
     { icon: <FaLinkedinIn className="w-5 h-5" />, link: 'https://linkedin.com/in/eric-aguayo-quintriqueo-b36783220', label: 'LinkedIn' },
-    { icon: <FaTwitter className="w-5 h-5" />, link: 'https://x.com/leftra123', label: 'Twitter' },
     { icon: <FaInstagram className="w-5 h-5" />, link: 'https://www.instagram.com/analema.x/', label: 'Instagram' },
     { icon: <FaWhatsapp className="w-5 h-5" />, link: 'https://wa.me/+56930518083', label: 'WhatsApp' },
   ]
@@ -44,14 +43,9 @@ export function Footer() {
   }
 
   return (
-    <footer className="py-16 md:py-20 lg:py-24 bg-gradient-to-b from-background to-background/80 border-t border-border/10">
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="container max-w-5xl mx-auto px-4 sm:px-6"
-      >
-        {/* Logo y descripción centrados para mejorar la estética */}
+    <footer className="py-16 md:py-20 bg-gradient-to-b from-background to-background/80 border-t border-border/10">
+      <div className="container max-w-4xl mx-auto px-4 sm:px-6">
+        {/* Logo y descripción centrados */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -63,7 +57,7 @@ export function Footer() {
             Eric Aguayo Quintriqueo
           </h2>
           <p className="text-muted-foreground max-w-md mx-auto">
-            Desarrollando soluciones digitales innovadoras con pasión y creatividad
+            Estudiante de Ingeniería en Informática y Analista Programador
           </p>
         </motion.div>
 
@@ -91,7 +85,7 @@ export function Footer() {
                   <Button
                     variant="outline"
                     size="icon"
-                    className="h-10 w-10 rounded-full border-border/50 bg-background/50 backdrop-blur-sm hover:bg-primary/10 hover:border-primary transition-all duration-300"
+                    className="h-10 w-10 rounded-full border-border/50 bg-background/50 hover:bg-primary/10 hover:border-primary transition-all duration-300"
                     asChild
                   >
                     <Link href={item.link} target="_blank" rel="noopener" aria-label={item.label}>
@@ -177,9 +171,9 @@ export function Footer() {
           className="text-center text-sm text-muted-foreground"
         >
           <p className="mb-1">© {currentYear} Eric Aguayo Quintriqueo. Todos los derechos reservados.</p>
-          <p>Desarrollado con Next.js, Tailwind CSS y Vercel</p>
+          <p>Desarrollado con Next.js, TailwindCSS y React</p>
         </motion.div>
-      </motion.div>
+      </div>
     </footer>
   )
 }

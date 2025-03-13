@@ -7,21 +7,22 @@ import { HeroSection } from "@/components/sections/hero"
 import { Navbar } from "@/components/sections/navbar"
 import { ProjectsSection } from "@/components/sections/projects"
 import { ScrollToTopButton } from "@/components/sections/ScrollToTopButton"
-// import { ThemeToggle } from "@/components/theme-toggle"
+import { Suspense } from "react"
 
 export default function Home() {
   return (
-    <main className="h-full overflow-y-auto">
+    <main className="flex flex-col min-h-screen overflow-x-hidden">
       <Navbar />
-      {/* <div className="fixed top-4 right-4 z-50">
-        <ThemeToggle />
-      </div>  */}
       <HeroSection />
-      <ExperienceSection />
-      <EducationSection />
-      <ProjectsSection />
-      <AchievementsSection />
-      <ContactSection />
+      
+      <Suspense fallback={<div className="h-screen flex items-center justify-center">Cargando...</div>}>
+        <ExperienceSection />
+        <EducationSection />
+        <ProjectsSection />
+        <AchievementsSection />
+        <ContactSection />
+      </Suspense>
+      
       <Footer />
       <ScrollToTopButton />
     </main>

@@ -4,11 +4,9 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import emailjs from '@emailjs/browser'
+import { Card, CardContent } from "@/components/ui/card"
 import { motion } from "framer-motion"
 import { useRef, useState } from "react"
-// Importamos React Icons
-import { Card, CardContent } from "@/components/ui/card"
 import { FaEnvelope, FaGithub, FaInstagram, FaLinkedinIn, FaPaperPlane, FaSpinner, FaWhatsapp } from "react-icons/fa"
 
 export default function ContactSection() {
@@ -31,6 +29,16 @@ export default function ContactSection() {
       return
     }
 
+    // Simulamos el envío exitoso para pruebas (reemplazar con la implementación real)
+    setTimeout(() => {
+      setSuccess(true)
+      form.current?.reset()
+      setLoading(false)
+      setTimeout(() => setSuccess(false), 5000)
+    }, 1500)
+
+    // Implementación real con EmailJS (descomentar en producción)
+    /*
     emailjs.sendForm(
       process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
       process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
@@ -47,6 +55,7 @@ export default function ContactSection() {
         console.error('EmailJS Error:', err)
       })
       .finally(() => setLoading(false))
+    */
   }
 
   // Contactos directos
@@ -73,32 +82,31 @@ export default function ContactSection() {
   ]
 
   return (
-    <section id="contacto" className="min-h-screen flex flex-col items-center justify-center py-1 pb-28 bg-gradient-to-b from-background to-background/80">
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="max-w-4xl mx-auto px-4 w-full"
-      >
-        <div className=" mb-12">
-          <motion.h2
-            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 relative inline-block"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          >
+    <section id="contacto" className="py-20 md:py-24 bg-gradient-to-b from-background to-background/80">
+      <div className="container max-w-4xl mx-auto px-4 sm:px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 text-center md:text-left"
+        >
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 inline-block relative">
             Contáctame
-            <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-primary/80"></span>
-          </motion.h2>
-          <p className="text-muted-foreground max-l-xl mx-auto">
-            ¿Tienes un proyecto en mente? Hablemos sobre cómo puedo ayudarte a hacerlo realidad.
+            <span className="absolute -bottom-2 left-0 w-24 h-1 bg-primary/80 rounded-full"></span>
+          </h2>
+          <p className="text-muted-foreground max-w-2xl md:mx-0 mx-auto mt-6">
+            ¿Tienes un proyecto en mente o una oportunidad para colaborar? Me encantaría escuchar tu propuesta.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 items-start">
+        <div className="grid md:grid-cols-2 gap-10 items-start">
           {/* Información de contacto */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             className="space-y-8"
           >
             <div className="space-y-4">
@@ -151,8 +159,9 @@ export default function ContactSection() {
           {/* Formulario */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
           >
             <Card className="backdrop-blur-sm border border-border/40 bg-card/30 p-6">
               <CardContent className="p-0">
@@ -166,7 +175,7 @@ export default function ContactSection() {
                     <Input
                       id="from_name"
                       name="from_name"
-                      placeholder="Ej: Iván González"
+                      placeholder="Ej: Patricio Developer"
                       disabled={loading}
                       required
                       className="bg-background/50 border-border/40 focus:border-primary/50"
@@ -179,7 +188,7 @@ export default function ContactSection() {
                       id="from_email"
                       type="email"
                       name="from_email"
-                      placeholder="tucorreo@gmail.com"
+                      placeholder="tucorreo@ejemplo.com"
                       disabled={loading}
                       required
                       className="bg-background/50 border-border/40 focus:border-primary/50"
@@ -233,7 +242,7 @@ export default function ContactSection() {
             </Card>
           </motion.div>
         </div>
-      </motion.div>
+      </div>
     </section>
   )
 }

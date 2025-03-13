@@ -14,9 +14,9 @@ export function AchievementsSection() {
     },
     {
       icon: <Users className="w-10 h-10" />,
-      count: "3+",
+      count: "10+",
       text: "Proyectos",
-      subtext: "en Producción",
+      subtext: "Desarrollados",
       color: "from-purple-500/20 to-purple-600/20"
     },
     {
@@ -44,7 +44,7 @@ export function AchievementsSection() {
       icon: <BookOpen className="w-10 h-10" />,
       count: "5+",
       text: "Metodologías",
-      subtext: "Implementadas",
+      subtext: "Aplicadas",
       color: "from-cyan-500/20 to-cyan-600/20"
     }
   ]
@@ -77,13 +77,13 @@ export function AchievementsSection() {
       }
     }
   }
-  // className="pt-24 pb-16 md:pt-28 md:pb-20 lg:py-24 bg-gradient-to-b from-background to-background/80"
+
   return (
     <section
       id="logros"
-      className="pt-24 pb-16 md:pt-28 md:pb-20 lg:py-24 bg-gradient-to-b from-background to-background/80"
+      className="py-20 md:py-24 bg-gradient-to-b from-background to-background/80"
     >
-      <div className="container max-w-4xl mx-auto px-4 sm:px-6 w-full">
+      <div className="container max-w-4xl mx-auto px-4 sm:px-6">
         <motion.h2
           className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
           initial={{ opacity: 0, y: -20 }}
@@ -101,7 +101,7 @@ export function AchievementsSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          Un vistazo a mi trayectoria profesional y los hitos alcanzados a lo largo de mi carrera.
+          Un vistazo a mi trayectoria profesional y los hitos alcanzados durante mi formación y carrera.
         </motion.p>
 
         <motion.div
