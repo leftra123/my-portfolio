@@ -1,20 +1,4 @@
 // https://uxdesign.cc/the-ultimate-guide-to-proper-use-of-animation-in-ux-10bd98614fa9
-// animation-utils.ts
-
-// Primero, definimos una interfaz para las opciones
-interface AnimationVariantOptions {
-  hidden?: {
-    opacity?: number;
-    y?: number;
-    x?: number;
-    scale?: number;
-    [key: string]: any;
-  };
-  duration?: number;
-  ease?: number[] | string;
-  stagger?: number;
-  delay?: number;
-}
 
 // Duración óptima según el artículo (200-500ms)
 export const DURATION = {
@@ -126,6 +110,21 @@ export const MOTION = {
     }
   }
 };
+
+// Definición para opciones de variantes de animación
+interface AnimationVariantOptions {
+  hidden?: {
+    opacity?: number;
+    y?: number;
+    x?: number;
+    scale?: number;
+    [key: string]: unknown;
+  };
+  duration?: number;
+  ease?: number[] | string;
+  stagger?: number;
+  delay?: number;
+}
 
 // Función para crear variantes de animación personalizadas
 export const createVariants = (options: AnimationVariantOptions) => {
