@@ -21,7 +21,7 @@ export function AchievementsSection() {
     },
     {
       icon: <Award className="w-10 h-10" />,
-      count: "15+",
+      count: "20+",
       text: "Certificaciones",
       subtext: "Obtenidas",
       color: "from-amber-500/20 to-amber-600/20"
