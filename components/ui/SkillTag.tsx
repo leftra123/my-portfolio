@@ -1,5 +1,4 @@
 "use client"
-
 import * as Tooltip from '@radix-ui/react-tooltip';
 import { motion } from "framer-motion";
 import { IconType } from "react-icons";
@@ -7,7 +6,7 @@ import {
   SiReact, 
   SiTypescript, 
   SiTailwindcss, 
-  SiNodeDotJs, 
+  SiNodedotjs,
   SiDjango, 
   SiFirebase, 
   SiNextdotjs, 
@@ -23,7 +22,7 @@ import {
   SiAstro,
   SiC,
   SiMysql,
-  SiJava,
+  SiOpenjdk,
   SiGooglecolab
 } from "react-icons/si";
 import { 
@@ -41,7 +40,6 @@ import {
   MdOutlineWork,
   MdReportProblem,
   MdSettings,
-  MdOutlineFastfood,
   MdPhoneAndroid
 } from "react-icons/md";
 
@@ -52,7 +50,7 @@ const skillIcons: Record<string, IconType> = {
   "Tailwind": SiTailwindcss,
   "TailwindCSS": SiTailwindcss,
   "Next.js": SiNextdotjs,
-  "Node.js": SiNodeDotJs,
+  "Node.js": SiNodedotjs,
   "Express": SiExpress,
   "Django": SiDjango,
   "Python": SiPython,
@@ -67,7 +65,7 @@ const skillIcons: Record<string, IconType> = {
   "Astro": SiAstro,
   "C": SiC,
   "MySQL": SiMysql,
-  "Java": SiJava,
+  "Java": SiOpenjdk,
   "Google Colab": SiGooglecolab,
   "PyQt5": SiPython,
   
@@ -128,8 +126,24 @@ const skillCategorias: Record<string, string> = {
   "PyQt5": "Tecnologías",
   "Google Colab": "Tecnologías",
   "Mobile": "Tecnologías",
+
+  // "Metodologías Ágiles": "Gestión",
+
+  // "Análisis de Datos": "Análisis",
+  // "Reportes": "Análisis",
+  // "Reportes Financieros": "Análisis",
+
+  // "Atención al Cliente": "Servicio",
+  // "Soporte de Hardware": "Servicio",
+  // "Manejo de Caja": "Servicio",
+
+  // "Coordinación": "Habilidades Blandas",
+  // "Supervisión": "Habilidades Blandas",
+  // "Trabajo en Equipo": "Habilidades Blandas",
+  // "Organización": "Habilidades Blandas",
+  // "Picking": "Habilidades Blandas",
+  // "Distribución": "Habilidades Blandas",
   
-  // ... y así para el resto de skills
 };
 
 interface SkillTagProps {
@@ -140,7 +154,7 @@ export function SkillTag({ skill }: SkillTagProps) {
   // Si existe un ícono para la skill, lo usaremos
   const IconComponent = skillIcons[skill] || MdOutlineWork;
   const categoria = skillCategorias[skill] || "Otros";
-
+  
   return (
     <Tooltip.Root>
       <Tooltip.Trigger asChild>
