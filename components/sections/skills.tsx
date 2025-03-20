@@ -30,7 +30,7 @@ const proyectos = [
 
 // Definición de categorías
 const categorias: Record<string, string[]> = {
-  "Lenguajes de Programación": ["Python", "JavaScript", "Java", "C"],
+  "Lenguajes de Programación": ["Python", "JavaScript", "Java", "C", "Ts"],
   "Frontend": ["HTML", "CSS", "React", "TailwindCSS", "Astro", "Next.js"],
   "Backend": ["Django", "Django Rest Framework", "API", "Backend"],
   "Bases de Datos": ["MySQL", "Base de Datos", "MongoDB", "Firebase"],

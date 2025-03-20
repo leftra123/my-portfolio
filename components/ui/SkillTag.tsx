@@ -23,7 +23,7 @@ import {
   SiC,
   SiMysql,
   SiOpenjdk,
-  SiGooglecolab
+  SiGooglecolab,
 } from "react-icons/si";
 import { 
   MdOutlineInventory, 
@@ -102,6 +102,9 @@ const skillCategorias: Record<string, string> = {
   "JavaScript": "Lenguajes de Programación",
   "Java": "Lenguajes de Programación",
   "C": "Lenguajes de Programación",
+  "TypeScript": "Lenguajes de Programación",
+  "Kotlin": "Lenguajes de Programación",
+  "C#": "Lenguajes de Programación",
   
   "HTML": "Frontend",
   "CSS": "Frontend",

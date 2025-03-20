@@ -8,6 +8,7 @@ import { Navbar } from "@/components/sections/navbar"
 import { ProjectsSection } from "@/components/sections/projects"
 import { ScrollToTopButton } from "@/components/sections/ScrollToTopButton"
 import { Suspense } from "react"
+// import { SkillsSection } from "@/components/sections/skills"
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         <EducationSection />
         <ProjectsSection />
         <AchievementsSection />
+        {/* <SkillsSection /> */}
         <ContactSection />
       </Suspense>
       
