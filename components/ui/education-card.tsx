@@ -7,10 +7,10 @@ interface EducationCardProps {
   institution: string
   degree: string
   period: string
-  description: string
+  // description: string
 }
 
-export function EducationCard({ institution, degree, period, description }: EducationCardProps) {
+export function EducationCard({ institution, degree, period }: EducationCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -24,8 +24,8 @@ export function EducationCard({ institution, degree, period, description }: Educ
           <p className="text-muted-foreground">{period}</p>
         </CardHeader>
         <CardContent>
-          <h4 className="font-semibold mb-2">{degree}</h4>
-          <p className="text-muted-foreground">{description}</p>
+          <h4 className="text-muted-foreground mb-2">{degree}</h4>
+          {/* <p className="text-muted-foreground">{description}</p> */}
         </CardContent>
       </Card>
     </motion.div>
