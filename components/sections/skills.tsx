@@ -1,5 +1,4 @@
 "use client"
-
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import SkillTag from "@/components/ui/SkillTag";
@@ -30,7 +29,7 @@ const proyectos = [
 ];
 
 // Definición de categorías
-const categorias = {
+const categorias: Record<string, string[]> = {
   "Lenguajes de Programación": ["Python", "JavaScript", "Java", "C"],
   "Frontend": ["HTML", "CSS", "React", "TailwindCSS", "Astro", "Next.js"],
   "Backend": ["Django", "Django Rest Framework", "API", "Backend"],
@@ -44,7 +43,7 @@ const categorias = {
 };
 
 // Función auxiliar para categorizar una habilidad
-const getCategoriaDeSkill = (skill) => {
+const getCategoriaDeSkill = (skill: string): string => {
   for (const [categoria, skills] of Object.entries(categorias)) {
     if (skills.includes(skill)) {
       return categoria;
@@ -56,7 +55,7 @@ const getCategoriaDeSkill = (skill) => {
 export function SkillsSection() {
   // Extraemos todas las tecnologías únicas de los proyectos
   const allTech = useMemo(() => {
-    const techSet = new Set();
+    const techSet = new Set<string>();
     proyectos.forEach((p) => {
       p.tech.forEach((t) => techSet.add(t));
     });
@@ -65,7 +64,7 @@ export function SkillsSection() {
 
   // Agrupamos las habilidades por categoría
   const techPorCategoria = useMemo(() => {
-    const result = {};
+    const result: Record<string, string[]> = {};
     
     // Inicializar todas las categorías incluso si están vacías
     Object.keys(categorias).forEach(cat => {
@@ -122,7 +121,6 @@ export function SkillsSection() {
         >
           Habilidades
         </motion.h2>
-
         <motion.p
           className="text-muted-foreground max-w-2xl mx-auto text-center mb-12"
           initial={{ opacity: 0 }}
@@ -132,7 +130,6 @@ export function SkillsSection() {
         >
           Estas son las tecnologías y herramientas que he utilizado en mis proyectos y experiencia laboral.
         </motion.p>
-
         <Tabs.Root
           value={categoriaActiva}
           onValueChange={setCategoriaActiva}
@@ -160,7 +157,6 @@ export function SkillsSection() {
               ))}
             </Tabs.List>
           </motion.div>
-
           <Tooltip.Provider>
             <motion.div
               className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 w-full"
@@ -174,7 +170,7 @@ export function SkillsSection() {
                   transition: { staggerChildren: 0.05 },
                 },
               }}
-              key={categoriaActiva} // Forzar re-renderizado de animaciones cuando cambia la categoría
+              key={categoriaActiva} 
             >
               {skillsVisibles.map((skill) => (
                 <SkillTag key={skill} skill={skill} />
