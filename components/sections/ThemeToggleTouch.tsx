@@ -14,7 +14,7 @@ export function ThemeToggleTouch() {
 
   if (!mounted) return null
 
-  const currentTheme = resolvedTheme || theme
+  const currentTheme = resolvedTheme || theme || "system"
   const themes = ["light", "dark", "system"]
   const currentIndex = themes.indexOf(currentTheme)
   const nextTheme = themes[(currentIndex + 1) % themes.length]
