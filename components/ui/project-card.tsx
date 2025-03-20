@@ -1,4 +1,5 @@
 import React from "react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 
 interface ProjectCardProps {
@@ -19,14 +20,20 @@ export function ProjectCard({
   repoUrl
 }: ProjectCardProps) {
   const defaultImage = "https://via.placeholder.com/300x200?text=No+Image"
+  
   return (
     <div className="bg-card rounded-lg shadow-md overflow-hidden flex flex-col h-full">
-      {/* Imagen */}
-      <img
-        src={image && image.trim() !== "" ? image : defaultImage}
-        alt={title}
-        className="w-full h-48 object-cover"
-      />
+      {/* Imagen optimizada con next/image */}
+      <div className="relative w-full h-48">
+        <Image
+          src={image && image.trim() !== "" ? image : defaultImage}
+          alt={title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority={false}
+          className="object-cover"
+        />
+      </div>
 
       {/* Contenido */}
       <div className="p-4 flex flex-col flex-1">
