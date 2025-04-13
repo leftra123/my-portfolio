@@ -10,6 +10,14 @@ export function EducationSection() {
 
   const certifications = [
     {
+      title: "Curso de Excel Avanzado con Macros",
+      issuer: "Platzi",
+      date: "Abril 2025",
+      id: "d57b1e8a-3fef-41eb-8b21-286f3542a6e9",
+      verificationUrl: "https://platzi.com/p/eric.x/curso/4294-excel-avanzado-macros/diploma/detalle/",
+      badges: ["VBA", "Macros", "Automatización", "Excel Avanzado", "Funciones personalizadas", "Dashboards dinámicos", "Programación en Excel"]
+    },
+    {
       title: "Curso de Data Warehousing y Data Lakes",
       issuer: "Platzi",
       date: "Abril 2025",
