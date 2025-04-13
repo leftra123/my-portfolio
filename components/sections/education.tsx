@@ -10,6 +10,14 @@ export function EducationSection() {
 
   const certifications = [
     {
+      title: "Curso de Looker Studio",
+      issuer: "Platzi",
+      date: "Abril 2025",
+      id: "667c7403-82e5-48d4-b611-f1537d861d96",
+      verificationUrl: "https://platzi.com/p/eric.x/curso/11972-course/diploma/detalle/",
+      badges: ["Looker Studio", "Visualización de datos", "Dashboards", "Business Intelligence", "Google Analytics", "Reportes interactivos", "Data Studio"]
+    },
+    {
       title: "Curso de Excel Avanzado con Macros",
       issuer: "Platzi",
       date: "Abril 2025",
