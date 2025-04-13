@@ -10,6 +10,14 @@ export function EducationSection() {
 
   const certifications = [
     {
+      title: "Curso de Data Warehousing y Data Lakes",
+      issuer: "Platzi",
+      date: "Abril 2025",
+      id: "9170dbaa-b031-4439-9d5d-f94b6a9a08b5",
+      verificationUrl: "https://platzi.com/p/eric.x/curso/11586-data-warehousing/diploma/detalle/",
+      badges: ["Data Warehousing", "Data Lakes", "ETL", "Modelado dimensional", "AWS Redshift", "Amazon S3", "Análisis de datos"]
+    },
+    {
       title: "Curso de Excel Intermedio para Analistas con Tableros y Fórmulas",
       issuer: "Platzi",
       date: "Marzo 2025",
