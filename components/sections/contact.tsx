@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
 import { motion } from "framer-motion"
+import emailjs from "emailjs-com"
 import { useRef, useState } from "react"
 import { FaEnvelope, FaGithub, FaInstagram, FaLinkedinIn, FaPaperPlane, FaSpinner, FaWhatsapp } from "react-icons/fa"
 
@@ -38,7 +39,7 @@ export default function ContactSection() {
     }, 1500)
 
     // Implementación real con EmailJS (descomentar en producción)
-    /*
+    
     emailjs.sendForm(
       process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
       process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
@@ -55,19 +56,19 @@ export default function ContactSection() {
         console.error('EmailJS Error:', err)
       })
       .finally(() => setLoading(false))
-    */
+    
   }
 
   // Contactos directos
   const contactMethods = [
     {
-      icon: <FaEnvelope className="h-6 w-6 text-primary" />,
+      icon: <FaEnvelope className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
       title: "Email",
       value: "eric04232013@gmail.com",
       href: "mailto:eric04232013@gmail.com"
     },
     {
-      icon: <FaWhatsapp className="h-6 w-6 text-primary" />,
+      icon: <FaWhatsapp className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />,
       title: "WhatsApp",
       value: "+56 9 3051 8083",
       href: "https://wa.me/+56930518083"
@@ -82,52 +83,52 @@ export default function ContactSection() {
   ]
 
   return (
-    <section id="contacto" className="py-20 md:py-24 bg-gradient-to-b from-background to-background/80">
+    <section id="contacto" className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-background to-background/80">
       <div className="container max-w-4xl mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-12 text-center md:text-left"
+          className="mb-10 sm:mb-12 text-center md:text-left"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 inline-block relative">
             Contáctame
             <span className="absolute -bottom-2 left-0 w-24 h-1 bg-primary/80 rounded-full"></span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl md:mx-0 mx-auto mt-6">
+          <p className="text-muted-foreground max-w-2xl md:mx-0 mx-auto mt-4 sm:mt-6">
             ¿Tienes un proyecto en mente o una oportunidad para colaborar? Me encantaría escuchar tu propuesta.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-10 items-start">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-10 items-start">
           {/* Información de contacto */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="space-y-8"
+            className="space-y-6"
           >
-            <div className="space-y-4">
+            <div className="space-y-3">
               <h3 className="text-xl font-semibold">Hablemos</h3>
-              <p className="text-muted-foreground">
+              <p className="text-sm sm:text-base text-muted-foreground">
                 Estoy disponible para proyectos freelance, oportunidades laborales o simplemente para conversar sobre tecnología e innovación.
               </p>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               {contactMethods.map((method, index) => (
                 <Card key={index} className="overflow-hidden border border-border/40 bg-card/30 backdrop-blur-sm hover:bg-card/50 transition-all duration-300">
-                  <CardContent className="p-4 flex items-center">
-                    <div className="mr-4 p-2 rounded-full bg-primary/10">
+                  <CardContent className="p-3 sm:p-4 flex items-center">
+                    <div className="mr-3 sm:mr-4 p-2 rounded-full bg-primary/10">
                       {method.icon}
                     </div>
                     <div>
-                      <h4 className="text-sm font-medium text-muted-foreground">{method.title}</h4>
+                      <h4 className="text-xs sm:text-sm font-medium text-muted-foreground">{method.title}</h4>
                       <a
                         href={method.href}
-                        className="text-foreground hover:text-primary transition-colors duration-200"
+                        className="text-sm sm:text-base text-foreground hover:text-primary transition-colors duration-200"
                       >
                         {method.value}
                       </a>
@@ -137,15 +138,15 @@ export default function ContactSection() {
               ))}
             </div>
 
-            <div className="pt-4">
-              <h4 className="text-sm font-medium text-muted-foreground mb-3">Sígueme en</h4>
+            <div className="pt-2 sm:pt-4">
+              <h4 className="text-xs sm:text-sm font-medium text-muted-foreground mb-3">Sígueme en</h4>
               <div className="flex gap-2">
                 {socialLinks.map((item, index) => (
                   <Button
                     key={index}
                     variant="outline"
                     size="icon"
-                    className="h-10 w-10 rounded-full border-border/50 hover:bg-primary/10 hover:border-primary/40 transition-all duration-300"
+                    className="h-9 w-9 sm:h-10 sm:w-10 rounded-full border-border/50 hover:bg-primary/10 hover:border-primary/40 transition-all duration-300"
                     onClick={() => window.open(item.link, '_blank')}
                     aria-label={item.label}
                   >
@@ -163,12 +164,12 @@ export default function ContactSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <Card className="backdrop-blur-sm border border-border/40 bg-card/30 p-6">
+            <Card className="backdrop-blur-sm border border-border/40 bg-card/30 p-4 sm:p-6">
               <CardContent className="p-0">
                 <form
                   ref={form}
                   onSubmit={sendEmail}
-                  className="space-y-6"
+                  className="space-y-4 sm:space-y-6"
                 >
                   <div className="space-y-2">
                     <Label htmlFor="from_name" className="text-foreground/90">Nombre</Label>
@@ -201,10 +202,10 @@ export default function ContactSection() {
                       id="message"
                       name="message"
                       placeholder="Describe tu proyecto o consulta..."
-                      rows={5}
+                      rows={4}
                       disabled={loading}
                       required
-                      className="bg-background/50 border-border/40 focus:border-primary/50 min-h-[120px]"
+                      className="bg-background/50 border-border/40 focus:border-primary/50 min-h-[100px] sm:min-h-[120px]"
                     />
                   </div>
 

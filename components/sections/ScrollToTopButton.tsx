@@ -44,7 +44,7 @@ export function ScrollToTopButton() {
             ease: [0, 0, 0.2, 1] // ease-out para entrada según el artículo
           }}
           onClick={scrollToTop}
-          className="fixed bottom-6 left-6 md:bottom-8 md:left-8 lg:bottom-10 lg:left-10 z-50 p-2.5 md:p-3 bg-primary text-white rounded-full shadow-lg hover:bg-primary/80 hover:shadow-xl transition-all duration-300"
+          className="scroll-to-top fixed bottom-6 left-6 md:bottom-8 md:left-8 lg:bottom-10 lg:left-10 z-50 p-2.5 md:p-3 bg-primary text-white rounded-full shadow-lg hover:bg-primary/80 hover:shadow-xl transition-all duration-300"
           aria-label="Volver arriba"
           whileHover={{ 
             y: -5, 

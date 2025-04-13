@@ -53,22 +53,26 @@ export function Navbar() {
 
   // Efecto para cerrar menú en pantallas grandes
   useEffect(() => {
-    const handleResize = () => window.innerWidth >= 768 && setIsMenuOpen(false)
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMenuOpen(false)
+      }
+    }
     window.addEventListener("resize", handleResize)
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
-  // Efecto para detectar la sección activa
+  // Efecto para detectar la sección activa con mejor precisión
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
             setActiveSection(entry.target.id)
           }
         })
       },
-      { threshold: 0.3 }
+      { threshold: [0.1, 0.3, 0.5] }
     )
 
     // Observamos todas las secciones
@@ -92,8 +96,10 @@ export function Navbar() {
       // Obtener la posición actual del scroll
       const offsetTop = section.getBoundingClientRect().top + window.pageYOffset
 
-      // Altura del navbar 
-      const navbarHeight = isScrolled ? 64 : 80 // h-16 (64px) cuando scrolled, h-20 (80px) cuando no
+      // Altura del navbar ajustada para móviles y desktop
+      const navbarHeight = isScrolled 
+        ? 64  // h-16 (64px) cuando scrolled
+        : window.innerWidth < 768 ? 72 : 80 // Menor en móviles, 80px (h-20) en desktop cuando no scrolled
 
       // Scroll a la posición calculada
       window.scrollTo({
@@ -118,20 +124,20 @@ export function Navbar() {
       : "bg-transparent"
   )
 
-  // Altura y padding del navbar basada en el scroll
+  // Altura y padding del navbar basada en el scroll y tamaño de pantalla
   const navbarHeight = cn(
     "transition-all duration-300",
     isScrolled
       ? "h-16 py-2"
-      : "h-20 py-4 md:h-24 md:py-6"
+      : "h-18 py-3 md:h-20 md:py-4 lg:h-24 lg:py-6"
   )
 
   // Efecto de padding horizontal dinámico
   const containerPadding = cn(
     "transition-all duration-300",
     isScrolled
-      ? "px-4 sm:px-6 lg:px-8"
-      : "px-5 sm:px-8 lg:px-10"
+      ? "px-3 sm:px-6 lg:px-8"
+      : "px-4 sm:px-8 lg:px-10"
   )
 
   return (
@@ -154,18 +160,17 @@ export function Navbar() {
             >
               <span className={cn(
                 "font-bold bg-gradient-to-r from-primary to-blue-700 bg-clip-text text-transparent transition-all duration-300",
-                isScrolled ? "text-sm sm:text-base" : "text-base sm:text-lg md:text-xl"
+                isScrolled ? "text-sm" : "text-base sm:text-lg md:text-xl"
               )}>
                 @leftra123
               </span>
               <Code2 className={cn(
                 "text-primary transition-all duration-300 group-hover:rotate-12",
-                isScrolled ? "h-5 w-5" : "h-6 w-6 md:h-7 md:w-7"
+                isScrolled ? "h-5 w-5" : "h-5 w-5 md:h-6 md:w-6"
               )} />
             </motion.div>
             {activeSection === "hero" && (
               <motion.div
-                // className="absolute -bottom-1 left-0 w-full h-[3px] bg-gradient-to-r from-primary/80 via-blue-500/80 to-blue-600/80 rounded-full"
                 layoutId="logoActive"
                 transition={{ type: "spring", stiffness: 300 }}
               />
@@ -214,7 +219,7 @@ export function Navbar() {
         </div>
 
         {/* Controles derecho */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -265,7 +270,7 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Menú móvil */}
+      {/* Menú móvil mejorado */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -279,7 +284,7 @@ export function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.2, delay: 0.1 }}
-              className="px-4 py-4"
+              className="px-4 py-2 pb-4"
             >
               {navItems.map((item, index) => {
                 const isActive = activeSection === item.href.split('#')[1]
@@ -294,7 +299,7 @@ export function Navbar() {
                     <Button
                       variant={item.highlight ? (isActive ? "default" : "outline") : "ghost"}
                       className={cn(
-                        "w-full justify-between text-base h-12 px-4 rounded-lg",
+                        "w-full justify-between text-base h-11 px-4 rounded-lg",
                         item.highlight && !isActive ? "border-primary/40 text-primary" : "",
                         !item.highlight && isActive
                           ? "bg-primary/10 text-primary font-medium"
