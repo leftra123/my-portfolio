@@ -40,8 +40,14 @@ export function Navbar() {
         setHasScrolledBeyondHero(scrollPosition > heroBottom - 200)
 
         // Calcular el progreso del scroll como porcentaje para transiciones suaves
-        const scrollPercentage = Math.min(scrollPosition / heroHeight, 1)
-        setScrollProgress(scrollPercentage)
+        const windowHeight = window.innerHeight
+        const documentHeight = document.documentElement.scrollHeight
+        const maxScrollableDistance = documentHeight - windowHeight
+
+        if (maxScrollableDistance > 0) {
+          const scrollPercentage = Math.min(scrollPosition / maxScrollableDistance, 1)
+          setScrollProgress(scrollPercentage)
+        }
       }
     }
 
@@ -97,7 +103,7 @@ export function Navbar() {
       const offsetTop = section.getBoundingClientRect().top + window.pageYOffset
 
       // Altura del navbar ajustada para móviles y desktop
-      const navbarHeight = isScrolled 
+      const navbarHeight = isScrolled
         ? 64  // h-16 (64px) cuando scrolled
         : window.innerWidth < 768 ? 72 : 80 // Menor en móviles, 80px (h-20) en desktop cuando no scrolled
 
