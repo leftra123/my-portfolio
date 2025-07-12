@@ -9,6 +9,13 @@ export function ExperienceSection() {
 
   const experiences = [
     {
+      title: "Profesional de Apoyo en Labores Educativas",
+      company: "Departamento de Educación | Ilustre Municipalidad de Galvarino",
+      date: "Abr 2025 - Dic 2025",
+      description: "Coordinación y creación de directorios de archivos institucionales del Departamento de Educación. Recopilación y organización sistemática de archivos de Personal, Bienes Muebles e Inmuebles, desarrollando sistemas de gestión documental para optimizar el acceso y control de información administrativa crítica.",
+      tech: ['Gestión Documental', 'Organización de Archivos', 'Coordinación Administrativa', 'Sistemas de Información']
+    },
+    {
       title: "Encargado de Inventarios y Procesos Administrativos",
       company: "Departamento de Educación | Ilustre Municipalidad de Galvarino",
       date: "Ene 2024 - Dic 2024",
