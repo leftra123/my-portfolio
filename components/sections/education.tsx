@@ -10,6 +10,14 @@ export function EducationSection() {
 
   const certifications = [
     {
+      title: "AWS Academy Graduate - AWS Academy Cloud Foundations",
+      issuer: "Amazon Web Services (AWS)",
+      date: "Julio 2025",
+      id: "01a5f797-92d0-44fa-858c-7cb9283a692c",
+      verificationUrl: "https://www.credly.com/badges/01a5f797-92d0-44fa-858c-7cb9283a692c/linked_in_profile",
+      badges: ["Amazon Redshift", "AWS", "Cloud Foundations"]
+    },
+    {
       title: "Curso de Looker Studio",
       issuer: "Platzi",
       date: "Abril 2025",
