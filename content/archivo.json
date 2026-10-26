@@ -1,0 +1,228 @@
+[
+  {
+    "year": "2026",
+    "name": "EduGalvarino",
+    "note": "Plataforma escolar municipal",
+    "stack": [
+      "Next.js",
+      "Supabase"
+    ],
+    "slug": "edugalvarino"
+  },
+  {
+    "year": "2026",
+    "name": "PsicoKairos",
+    "note": "Reservas, Webpay y ficha clínica",
+    "stack": [
+      "Next.js",
+      "Postgres",
+      "Webpay"
+    ],
+    "slug": "psicokairos"
+  },
+  {
+    "year": "2026",
+    "name": "Hidroimplementos",
+    "note": "eCommerce y API · con AIvolution",
+    "stack": [
+      "FastAPI",
+      "Next.js"
+    ],
+    "slug": "hidroimplementos"
+  },
+  {
+    "year": "2026",
+    "name": "TRAZO",
+    "note": "Trazabilidad de pañol · título",
+    "stack": [
+      "Django",
+      "React"
+    ],
+    "slug": "trazo"
+  },
+  {
+    "year": "2026",
+    "name": "Cofrial SpA",
+    "note": "Cadena de frío en AWS · académico",
+    "stack": [
+      "AWS",
+      "PostgreSQL"
+    ],
+    "slug": "cofrial"
+  },
+  {
+    "year": "2026",
+    "name": "Teleprompter",
+    "note": "Teleprompter con grabación, sin cuentas",
+    "stack": [
+      "Expo",
+      "React Native"
+    ],
+    "href": "https://github.com/leftra123/teleprompter"
+  },
+  {
+    "year": "2026",
+    "name": "Inventario Casa",
+    "note": "PWA de compras y gastos con bot de Telegram",
+    "stack": [
+      "Next.js",
+      "Supabase",
+      "PWA"
+    ]
+  },
+  {
+    "year": "2026",
+    "name": "Voltex SmartCheck",
+    "note": "Checklist técnico en terreno con informe PDF",
+    "stack": [
+      "React",
+      "Express",
+      "jsPDF"
+    ]
+  },
+  {
+    "year": "2026",
+    "name": "Agente personal",
+    "note": "Generación de documentos con agentes",
+    "stack": [
+      "Next.js",
+      "Mastra",
+      "Drizzle"
+    ]
+  },
+  {
+    "year": "2025",
+    "name": "RemuPro",
+    "note": "Distribución automática de la BRP",
+    "stack": [
+      "Python",
+      "Streamlit"
+    ],
+    "slug": "remupro"
+  },
+  {
+    "year": "2025",
+    "name": "HydroFlow Monitor",
+    "note": "Monitoreo hidrológico del Río Claro",
+    "stack": [
+      "React",
+      "Three.js",
+      "Leaflet"
+    ],
+    "href": "https://github.com/leftra123/hydroflow-monitor"
+  },
+  {
+    "year": "2025",
+    "name": "Dashboard Río Claro",
+    "note": "Variables hidrológicas en tiempo real",
+    "stack": [
+      "React",
+      "Recharts"
+    ],
+    "href": "https://hello-world-era-antes.vercel.app/"
+  },
+  {
+    "year": "2025",
+    "name": "RemuPro v1",
+    "note": "Primera versión de escritorio",
+    "stack": [
+      "PyQt5",
+      "pandas",
+      "R"
+    ],
+    "href": "https://github.com/leftra123/colab"
+  },
+  {
+    "year": "2025",
+    "name": "CinePlus",
+    "note": "Sitio de películas responsive",
+    "stack": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "href": "https://github.com/leftra123/cineplus"
+  },
+  {
+    "year": "2024",
+    "name": "Sistema de Transporte",
+    "note": "Horas extra y pagos de conductores",
+    "stack": [
+      "Django",
+      "PostgreSQL"
+    ],
+    "href": "https://github.com/leftra123/transporte_2"
+  },
+  {
+    "year": "2023",
+    "name": "Landing Tesla",
+    "note": "Clon de la portada de Tesla",
+    "stack": [
+      "Astro",
+      "Tailwind"
+    ],
+    "href": "https://landing-tesla-fawn.vercel.app"
+  },
+  {
+    "year": "2023",
+    "name": "Gestión Educativa",
+    "note": "CRUD de establecimientos y personal",
+    "stack": [
+      "Django",
+      "React"
+    ],
+    "href": "https://github.com/leftra123/gestion-educativa-api"
+  },
+  {
+    "year": "2023",
+    "name": "Tarjeta digital",
+    "note": "Tarjeta interactiva con audio y animación",
+    "stack": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "href": "https://github.com/leftra123/juan-del-sur"
+  },
+  {
+    "year": "2022",
+    "name": "Sistema de Devoluciones",
+    "note": "Roles y consulta del dólar por API",
+    "stack": [
+      "Django",
+      "MySQL"
+    ],
+    "href": "https://github.com/leftra123/devolucion-project-django"
+  },
+  {
+    "year": "2022",
+    "name": "Gestión de Incidentes",
+    "note": "App móvil con datos en tiempo real",
+    "stack": [
+      "Java",
+      "Firebase"
+    ],
+    "href": "https://github.com/leftra123/incidentes_inacap_evaluacion_3"
+  },
+  {
+    "year": "2022",
+    "name": "Innovación y Emprendimiento",
+    "note": "Portal de ideas de la comunidad",
+    "stack": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "href": "https://github.com/leftra123/innovacionemprendimientoII"
+  },
+  {
+    "year": "2022",
+    "name": "Proyecto Arduino",
+    "note": "LEDs, buzzer y displays en C",
+    "stack": [
+      "C",
+      "Arduino"
+    ],
+    "href": "https://github.com/leftra123/arduino"
+  }
+]

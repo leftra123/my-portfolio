@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://leftra123.vercel.app/sitemap.xml

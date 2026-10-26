@@ -1,0 +1,58 @@
+{
+  "company": "AuraTech",
+  "tagline": "Software a medida para instituciones y pymes del sur de Chile",
+  "motto": "Ideas · Tecnología · Impacto",
+  "seoTitle": "AuraTech — Software a medida en La Araucanía",
+  "seoDescription": "AuraTech diseña y construye plataformas, automatizaciones e integraciones para instituciones públicas y pymes del sur de Chile. Fundada por Eric Aguayo Quintriqueo.",
+  "available": true,
+  "announcement": {
+    "enabled": false,
+    "text": "",
+    "href": ""
+  },
+  "hero": {
+    "eyebrow": "AuraTech · La Araucanía, Chile",
+    "title": "De la planilla al sistema en producción.",
+    "highlight": "producción",
+    "subtitle": "Diseñamos y construimos plataformas, automatizaciones e integraciones para instituciones públicas y pymes del sur de Chile.",
+    "primaryLabel": "Ver proyectos",
+    "secondaryLabel": "Conversemos"
+  },
+  "manifesto": "Antes de la IA, construir software era un proceso enorme. Hoy es la mejor ayuda que pude tener: yo pongo el criterio, la revisión y la responsabilidad.",
+  "sections": [
+    {
+      "id": "trabajo",
+      "visible": true
+    },
+    {
+      "id": "servicios",
+      "visible": true
+    },
+    {
+      "id": "historia",
+      "visible": true
+    },
+    {
+      "id": "contacto",
+      "visible": true
+    },
+    {
+      "id": "experiencia",
+      "visible": false
+    },
+    {
+      "id": "charlas",
+      "visible": false
+    },
+    {
+      "id": "proceso",
+      "visible": false
+    },
+    {
+      "id": "formacion",
+      "visible": false
+    }
+  ],
+  "defaultTheme": "dark",
+  "updated": "2026-10-16"
+}

@@ -1,0 +1,55 @@
+[
+  {
+    "group": "Frontend",
+    "items": [
+      "TypeScript",
+      "React 19",
+      "Next.js App Router",
+      "Tailwind CSS v4",
+      "shadcn/ui",
+      "TanStack Query",
+      "Zustand",
+      "Vite",
+      "Astro"
+    ]
+  },
+  {
+    "group": "Backend y datos",
+    "items": [
+      "PostgreSQL",
+      "Supabase · Auth, RLS, Storage",
+      "Node.js",
+      "FastAPI",
+      "Django + DRF",
+      "SQLAlchemy",
+      "Drizzle",
+      "Python + pandas"
+    ]
+  },
+  {
+    "group": "Integraciones",
+    "items": [
+      "Transbank Webpay",
+      "WhatsApp Cloud API",
+      "Resend",
+      "Google Drive API",
+      "Web Push",
+      "LLM con tool-calling",
+      "Bots de Telegram"
+    ]
+  },
+  {
+    "group": "Infraestructura y calidad",
+    "items": [
+      "Vercel",
+      "Docker",
+      "AWS · EC2, RDS",
+      "GitHub Actions",
+      "Sentry",
+      "Jest",
+      "Vitest",
+      "Playwright",
+      "pytest"
+    ]
+  }
+]
