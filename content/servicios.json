@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Plataformas a medida",
+    "body": "Sistemas web para gestionar personas, horarios, documentos y finanzas, con roles y permisos claros.",
+    "icon": "plataformas"
+  },
+  {
+    "title": "Automatización de procesos",
+    "body": "Lo que hoy se calcula a mano pasa a un sistema que valida, calcula y deja registro de cada cambio.",
+    "icon": "automatizacion"
+  },
+  {
+    "title": "Reservas, pagos y tiendas",
+    "body": "Agenda en línea, Webpay, recordatorios por WhatsApp y tiendas que se administran solas.",
+    "icon": "comercio"
+  },
+  {
+    "title": "IA aplicada",
+    "body": "Asistentes y automatizaciones que ahorran trabajo repetitivo, con los datos donde corresponden.",
+    "icon": "ia"
+  }
+]

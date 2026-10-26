@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Entender",
+    "body": "Conversamos con quien hace el trabajo y vemos dónde se pierde tiempo."
+  },
+  {
+    "title": "Prototipar",
+    "body": "Pruebas una primera versión real antes de construirlo todo."
+  },
+  {
+    "title": "Construir por etapas",
+    "body": "Entregas cortas y probadas, con avances visibles desde el inicio."
+  },
+  {
+    "title": "Acompañar",
+    "body": "Despliegue, capacitación y mejoras junto a quienes lo usan."
+  }
+]

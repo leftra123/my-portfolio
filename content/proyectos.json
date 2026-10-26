@@ -1,0 +1,574 @@
+[
+  {
+    "slug": "edugalvarino",
+    "name": "EduGalvarino",
+    "kicker": "Plataforma escolar municipal",
+    "summary": "Horarios, recursos humanos, finanzas y transporte de las 21 escuelas municipales de Galvarino, en una sola plataforma con portal público.",
+    "year": "2026",
+    "role": "Desarrollo full-stack, arquitectura y diseño",
+    "client": "DAEM Galvarino",
+    "engagement": "Profesional externo del DAEM",
+    "status": "En producción",
+    "url": "https://www.edugalvarino.cl",
+    "stack": [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "Supabase",
+      "PostgreSQL + RLS",
+      "Tailwind v4",
+      "Vercel",
+      "Sentry"
+    ],
+    "metrics": [
+      {
+        "value": "453",
+        "label": "usuarios activos"
+      },
+      {
+        "value": "21",
+        "label": "establecimientos"
+      },
+      {
+        "value": "123",
+        "label": "cursos"
+      },
+      {
+        "value": "~4.000",
+        "label": "bloques de horario"
+      }
+    ],
+    "cover": {
+      "src": "/work/edugalvarino-portal.jpg",
+      "alt": "Portada pública de EduGalvarino: vista aérea de Galvarino con el título Nuestra comunidad escolar."
+    },
+    "gallery": [
+      {
+        "src": "/work/edugalvarino-acceso.jpg",
+        "alt": "Pantalla de acceso de EduGalvarino con inicio de sesión por código al correo institucional."
+      }
+    ],
+    "context": "La gestión escolar del DAEM vivía repartida entre planillas, correos y procesos manuales en 21 establecimientos rurales, urbanos e interculturales. Cada área tenía su propia versión de los datos.",
+    "built": [
+      {
+        "title": "Generador de horarios",
+        "body": "Algoritmo greedy con heurística MRV y restricciones duras y blandas que aplica la Ley 20.903. Entrega cada propuesta con un puntaje de 0 a 100."
+      },
+      {
+        "title": "Carga inteligente de gastos",
+        "body": "Detecta las filas reales de cada planilla, valida en dos niveles (RUT con dígito verificador y cuadre por decreto) y promueve de staging a tablas finales con override auditado."
+      },
+      {
+        "title": "Liquidaciones y documentos",
+        "body": "Sincronización programada desde Google Drive y descarga que verifica quién es el dueño de cada documento."
+      },
+      {
+        "title": "Transporte escolar",
+        "body": "Flota, rutas e inspecciones, con actas verificables públicamente por código."
+      },
+      {
+        "title": "Portal público",
+        "body": "SEO con datos estructurados de las 21 escuelas, mapa interactivo, saludo en mapuzungun y accesibilidad WCAG 2.1 AA."
+      },
+      {
+        "title": "Asistente EduIA",
+        "body": "Asistente con tool-calling, guardrails y un adaptador que permite cambiar de proveedor de modelo."
+      }
+    ],
+    "architecture": [
+      {
+        "title": "Interfaz",
+        "body": "Portal público de las 21 escuelas y panel interno, instalable como aplicación y accesible (WCAG 2.1 AA).",
+        "tech": [
+          "Next.js 16",
+          "React 19",
+          "Tailwind v4"
+        ]
+      },
+      {
+        "title": "Servicios",
+        "body": "Generador de horarios, carga de gastos, documentos y el asistente EduIA con un adaptador para cambiar de modelo.",
+        "tech": [
+          "TypeScript"
+        ]
+      },
+      {
+        "title": "Datos",
+        "body": "Seguridad por fila en todas las tablas, auditoría de cambios sensibles y un trigger que impide escalar roles.",
+        "tech": [
+          "Supabase",
+          "PostgreSQL + RLS"
+        ]
+      },
+      {
+        "title": "Operación",
+        "body": "Integración continua con pruebas y análisis de dependencias, tareas programadas y monitoreo de errores.",
+        "tech": [
+          "Vercel",
+          "Sentry"
+        ]
+      }
+    ],
+    "decisions": [
+      "Row Level Security en todas las tablas y un trigger que impide escalar roles.",
+      "Registros de auditoría en cada cambio sensible.",
+      "Integración continua con pruebas y análisis de dependencias.",
+      "Tareas programadas y notificaciones push como aplicación instalable."
+    ],
+    "outcome": "En agosto de 2026 la plataforma tenía 453 usuarios activos en 21 establecimientos, con 123 cursos y cerca de 4.000 bloques de horario colocados.",
+    "featured": true,
+    "mobile": {
+      "src": "/work/edugalvarino-movil.jpg",
+      "alt": "Portada de EduGalvarino en un celular."
+    }
+  },
+  {
+    "slug": "psicokairos",
+    "name": "PsicoKairos",
+    "kicker": "Reservas y pagos para un centro de salud mental",
+    "summary": "Del agendamiento por WhatsApp a la reserva en línea con Webpay, bono Fonasa, recordatorios automáticos y ficha clínica.",
+    "year": "2026",
+    "role": "Diseño y desarrollo · AuraTech",
+    "client": "Consulta Psicológica Psicokairos SpA · Paine",
+    "status": "En producción",
+    "url": "https://www.psicokairos.cl",
+    "stack": [
+      "Next.js 16",
+      "React 19",
+      "PostgreSQL",
+      "Auth.js",
+      "Transbank Webpay",
+      "WhatsApp Cloud API",
+      "Resend",
+      "Vitest"
+    ],
+    "metrics": [
+      {
+        "value": "Webpay",
+        "label": "pago en línea desde sep. 2026"
+      },
+      {
+        "value": "Fonasa",
+        "label": "bono integrado a la reserva"
+      },
+      {
+        "value": "3",
+        "label": "canales de aviso: correo, WhatsApp y push"
+      }
+    ],
+    "cover": {
+      "src": "/work/psicokairos-paine.jpg",
+      "alt": "Página de servicio de PsicoKairos para Paine con botones para agendar hora y escribir por WhatsApp."
+    },
+    "context": "El centro coordinaba horas, pagos y bonos Fonasa a mano por WhatsApp. Cada reserva implicaba varios mensajes y el riesgo de dobles agendamientos.",
+    "built": [
+      {
+        "title": "Reserva con pago",
+        "body": "El cupo queda apartado mientras se paga con Webpay Plus. El monto se calcula en el servidor y la confirmación de Transbank es la única fuente de verdad."
+      },
+      {
+        "title": "Conciliación idempotente",
+        "body": "Una tarea programada revisa los pagos pendientes y se puede ejecutar tantas veces como haga falta sin duplicar nada."
+      },
+      {
+        "title": "Reprogramar sin cuenta",
+        "body": "El paciente mueve su hora desde un enlace, con reglas de anticipación y un registro de solo inserción."
+      },
+      {
+        "title": "Lista de espera",
+        "body": "Cuando una hora se libera, el sistema la ofrece sola a quien estaba esperando."
+      },
+      {
+        "title": "Avisos en todos los canales",
+        "body": "Recordatorios y agenda diaria por correo, WhatsApp y notificaciones push."
+      },
+      {
+        "title": "Ficha clínica",
+        "body": "Formatos de nota por profesional, acceso restringido por paciente y registro de actividad."
+      }
+    ],
+    "architecture": [
+      {
+        "title": "Interfaz",
+        "body": "Reserva en línea, reprogramación desde un enlace y ficha clínica con acceso restringido por paciente.",
+        "tech": [
+          "Next.js 16",
+          "React 19",
+          "Auth.js"
+        ]
+      },
+      {
+        "title": "Pagos",
+        "body": "El cupo se aparta mientras se paga; la confirmación de Transbank manda y una tarea concilia sin duplicar.",
+        "tech": [
+          "Transbank Webpay"
+        ]
+      },
+      {
+        "title": "Mensajería",
+        "body": "Recordatorios y agenda diaria por correo, WhatsApp y notificaciones push.",
+        "tech": [
+          "WhatsApp Cloud API",
+          "Resend"
+        ]
+      },
+      {
+        "title": "Datos y pruebas",
+        "body": "Postgres en producción y un adaptador en memoria para probar todo sin red.",
+        "tech": [
+          "PostgreSQL",
+          "Vitest"
+        ]
+      }
+    ],
+    "decisions": [
+      "Interfaz PaymentProvider intercambiable: Webpay en producción y Khipu implementado.",
+      "Integración con Transbank por API REST, sin SDK.",
+      "Adaptador de base de datos en memoria o Postgres para probar sin red.",
+      "Páginas de servicio por comuna e IndexNow para el SEO local."
+    ],
+    "outcome": "Webpay está en producción desde septiembre de 2026 y el centro agenda, cobra y recuerda horas sin intervención manual.",
+    "featured": true,
+    "mobile": {
+      "src": "/work/psicokairos-movil.jpg",
+      "alt": "Página de PsicoKairos para Paine en un celular."
+    },
+    "gallery": [
+      {
+        "src": "/work/psicokairos-fonasa.jpg",
+        "alt": "Página de PsicoKairos sobre atención con bono Fonasa."
+      }
+    ]
+  },
+  {
+    "slug": "hidroimplementos",
+    "name": "Hidroimplementos",
+    "kicker": "eCommerce y API para una ferretería agrícola",
+    "summary": "API modular, panel de administración y tienda pública para un comercio de bombas, tuberías y riego, desarrollados junto a AIvolution.",
+    "year": "2026",
+    "role": "Desarrollo full-stack, en conjunto con AIvolution",
+    "client": "Hidroimplementos",
+    "status": "Preview",
+    "url": "https://hidroimplementos.cl",
+    "stack": [
+      "FastAPI",
+      "PostgreSQL 16",
+      "SQLAlchemy async",
+      "Alembic",
+      "Next.js 16",
+      "React 19",
+      "TanStack Query",
+      "Docker"
+    ],
+    "metrics": [
+      {
+        "value": "3",
+        "label": "piezas: API, panel y tienda"
+      },
+      {
+        "value": "5",
+        "label": "áreas del negocio modeladas"
+      }
+    ],
+    "cover": {
+      "src": "/work/hidroimplementos-tienda.jpg",
+      "alt": "Portada de la tienda Hidroimplementos con el titular Del pozo al último aspersor sobre un campo regado."
+    },
+    "context": "Un comercio de soluciones hídricas necesitaba vender en línea y ordenar su catálogo, clientes y ventas en un solo sistema.",
+    "built": [
+      {
+        "title": "API por dominios",
+        "body": "Monolito modular con un esquema de Postgres por dominio: autenticación, productos, clientes, ventas y pagos."
+      },
+      {
+        "title": "Panel de administración",
+        "body": "Gestión de catálogo, clientes y ventas con React, Vite y TanStack Query."
+      },
+      {
+        "title": "Tienda pública",
+        "body": "Catálogo, ficha de producto, carrito, checkout y seguimiento de pedidos con buscador móvil y autocompletado."
+      }
+    ],
+    "architecture": [
+      {
+        "title": "Tienda pública",
+        "body": "Catálogo, carrito, checkout y seguimiento de pedidos, con buscador móvil y autocompletado.",
+        "tech": [
+          "Next.js 16",
+          "React 19"
+        ]
+      },
+      {
+        "title": "Panel",
+        "body": "Gestión de catálogo, clientes y ventas para el equipo del comercio.",
+        "tech": [
+          "Vite",
+          "TanStack Query"
+        ]
+      },
+      {
+        "title": "API",
+        "body": "Monolito modular por dominios; la API key solo vive en el servidor.",
+        "tech": [
+          "FastAPI",
+          "SQLAlchemy async"
+        ]
+      },
+      {
+        "title": "Datos",
+        "body": "Un esquema por dominio, UUID y borrado lógico en todas las entidades, migraciones versionadas.",
+        "tech": [
+          "PostgreSQL 16",
+          "Alembic",
+          "Docker"
+        ]
+      }
+    ],
+    "decisions": [
+      "La API key solo vive en el servidor; el navegador nunca la ve.",
+      "Paginación con un mismo sobre en todos los endpoints.",
+      "UUID y borrado lógico en todas las entidades.",
+      "Pagos modelados para Webpay y MercadoPago desde el inicio."
+    ],
+    "outcome": "La tienda y el panel están en línea en modo preview mientras se completa el catálogo real.",
+    "featured": true,
+    "mobile": {
+      "src": "/work/hidroimplementos-movil.jpg",
+      "alt": "Portada de la tienda Hidroimplementos en un celular."
+    },
+    "gallery": [
+      {
+        "src": "/work/hidroimplementos-catalogo.jpg",
+        "alt": "Catálogo de productos de Hidroimplementos con filtros por familia y medida."
+      }
+    ],
+    "partner": {
+      "name": "AIvolution",
+      "url": "https://aivolution.cl"
+    }
+  },
+  {
+    "slug": "remupro",
+    "name": "RemuPro",
+    "kicker": "Remuneraciones educativas automatizadas",
+    "summary": "Distribuye la BRP entre las subvenciones SEP, PIE y Normal a partir de tres planillas, y genera reportes por docente y por establecimiento.",
+    "year": "2025 — 2026",
+    "role": "Diseño y desarrollo",
+    "client": "DAEM Galvarino · herramienta interna",
+    "engagement": "Profesional externo del DAEM",
+    "status": "En uso interno",
+    "stack": [
+      "Python 3.13",
+      "pandas",
+      "Streamlit",
+      "SQLAlchemy",
+      "SQLite",
+      "Plotly",
+      "python-docx",
+      "Docker"
+    ],
+    "metrics": [
+      {
+        "value": "3",
+        "label": "subvenciones: SEP, PIE y Normal"
+      },
+      {
+        "value": "12",
+        "label": "meses por lote anual"
+      },
+      {
+        "value": "44 h",
+        "label": "tope legal validado"
+      }
+    ],
+    "motif": "ledger",
+    "context": "La distribución de la Bonificación de Reconocimiento Profesional se armaba a mano en Excel, cruzando planillas del MINEDUC con las de cada subvención.",
+    "built": [
+      {
+        "title": "Docentes en varias escuelas",
+        "body": "Distribución por RBD cuando un docente trabaja en dos o más establecimientos."
+      },
+      {
+        "title": "Validaciones legales",
+        "body": "Control del tope de 44 horas y alertas antes de cerrar cada mes."
+      },
+      {
+        "title": "Informe automático",
+        "body": "Documento Word listo para firmar, histórico con tendencias y log de auditoría."
+      }
+    ],
+    "architecture": [
+      {
+        "title": "Interfaz",
+        "body": "Carga de tres planillas y tableros con la tendencia de cada mes.",
+        "tech": [
+          "Streamlit",
+          "Plotly"
+        ]
+      },
+      {
+        "title": "Cálculo",
+        "body": "Distribuye la BRP por subvención y por RBD, con el tope legal de 44 horas validado antes de cerrar.",
+        "tech": [
+          "Python 3.13",
+          "pandas"
+        ]
+      },
+      {
+        "title": "Informes",
+        "body": "Documento Word listo para firmar y registro de auditoría.",
+        "tech": [
+          "python-docx"
+        ]
+      },
+      {
+        "title": "Datos",
+        "body": "Histórico local para comparar meses y procesar años completos en lote.",
+        "tech": [
+          "SQLAlchemy",
+          "SQLite",
+          "Docker"
+        ]
+      }
+    ],
+    "decisions": [
+      "Tres versiones: escritorio con PyQt5, web con Streamlit y una API en camino.",
+      "Lote anual de 12 meses para procesar años completos de una vez.",
+      "Validación de las planillas antes de calcular."
+    ],
+    "outcome": "El DAEM la usa para cerrar la BRP de cada mes con reportes trazables por docente.",
+    "featured": true
+  },
+  {
+    "slug": "trazo",
+    "name": "TRAZO",
+    "kicker": "Trazabilidad de pañol académico",
+    "summary": "Inventario, ubicaciones, movimientos, mantención y compras de un pañol, con existencias que no pueden quedar en negativo.",
+    "year": "2026",
+    "role": "Proyecto de título",
+    "client": "INACAP · Ingeniería en Informática",
+    "status": "En desarrollo",
+    "stack": [
+      "Django 6",
+      "Django REST Framework",
+      "Python 3.14",
+      "React 19",
+      "Vite"
+    ],
+    "metrics": [],
+    "motif": "grid",
+    "context": "El pañol de equipamiento e insumos se controlaba sin trazabilidad: no había forma confiable de saber qué salió, quién lo tiene y cuándo reponer.",
+    "built": [
+      {
+        "title": "Libro de movimientos",
+        "body": "Registro de solo inserción con bloqueo SELECT … FOR UPDATE para impedir saldos negativos con usuarios concurrentes."
+      },
+      {
+        "title": "Pensado para tableta",
+        "body": "Flujo de préstamo y devolución con lector de códigos 2D probado en terreno."
+      },
+      {
+        "title": "Compras con respaldo",
+        "body": "Umbrales de reposición y compras con tres cotizaciones comparables."
+      }
+    ],
+    "architecture": [
+      {
+        "title": "Interfaz",
+        "body": "Préstamo y devolución en tableta, con lector de códigos 2D probado en terreno.",
+        "tech": [
+          "React 19",
+          "Vite"
+        ]
+      },
+      {
+        "title": "API",
+        "body": "Compras con tres cotizaciones comparables y umbrales de reposición.",
+        "tech": [
+          "Django REST Framework"
+        ]
+      },
+      {
+        "title": "Dominio",
+        "body": "Libro de movimientos de solo inserción con SELECT … FOR UPDATE: el saldo nunca queda negativo.",
+        "tech": [
+          "Django 6",
+          "Python 3.14"
+        ]
+      }
+    ],
+    "decisions": [
+      "Desarrollo asistido por agentes (Claude Code y Codex) con un protocolo de revisión cruzada documentado.",
+      "Las existencias se derivan del libro de movimientos, nunca se editan a mano."
+    ],
+    "outcome": "En desarrollo como proyecto de título para la entrega de 2026.",
+    "featured": false
+  },
+  {
+    "slug": "cofrial",
+    "name": "Cofrial SpA",
+    "kicker": "Transformación digital de una cadena de frío",
+    "summary": "Arquitectura en AWS que une e-commerce B2B/B2C, CRM, un asistente con IA y la telemetría de una flota refrigerada.",
+    "year": "2026",
+    "role": "Arquitectura y desarrollo · equipo de dos",
+    "client": "INACAP · Transformación digital",
+    "status": "Académico",
+    "stack": [
+      "AWS EC2",
+      "Amazon RDS",
+      "PostgreSQL",
+      "Docker",
+      "IoT",
+      "BI"
+    ],
+    "metrics": [
+      {
+        "value": "50",
+        "label": "camiones simulados con telemetría"
+      }
+    ],
+    "motif": "cold",
+    "context": "Caso de estudio de un frigorífico que necesitaba conectar ventas, clientes y el control de temperatura de su flota.",
+    "built": [
+      {
+        "title": "Ecosistema en AWS",
+        "body": "E-commerce, CRM y asistente con IA sobre una sola base PostgreSQL en RDS."
+      },
+      {
+        "title": "Telemetría de flota",
+        "body": "Cincuenta camiones simulados en Docker que envían temperatura y posición a un dashboard de BI."
+      }
+    ],
+    "architecture": [
+      {
+        "title": "Canales",
+        "body": "E-commerce B2B y B2C, CRM y un asistente con IA sobre la misma base.",
+        "tech": [
+          "AWS EC2",
+          "Docker"
+        ]
+      },
+      {
+        "title": "Datos",
+        "body": "Una sola fuente para ventas, clientes y flota, en tercera forma normal.",
+        "tech": [
+          "Amazon RDS",
+          "PostgreSQL"
+        ]
+      },
+      {
+        "title": "Telemetría",
+        "body": "Cincuenta camiones simulados envían temperatura y posición a un tablero de BI.",
+        "tech": [
+          "IoT",
+          "BI"
+        ]
+      }
+    ],
+    "decisions": [
+      "Una sola fuente de datos para ventas, clientes y flota, modelada en tercera forma normal."
+    ],
+    "outcome": "Entrega académica con despliegue en AWS y defensa en noviembre de 2026.",
+    "featured": false
+  }
+]

@@ -1,0 +1,33 @@
+[
+  {
+    "kicker": "El comienzo",
+    "title": "Un robot y una aplicación muy fea",
+    "body": "Una experiencia en robótica me llevó a programar un robot. La aplicación era muy fea, pero funcionó, y la programación me cautivó."
+  },
+  {
+    "kicker": "2017 — 2022",
+    "title": "Inventarios desde adentro",
+    "body": "Bodega, caja y reposición. Ahí aprendí cómo se ve un proceso cuando no cuadra."
+  },
+  {
+    "kicker": "2021 — 2022",
+    "title": "Analista Programador",
+    "body": "Me titulé en INACAP Temuco. Ahí la curiosidad se volvió oficio."
+  },
+  {
+    "kicker": "2023 — 2025",
+    "title": "Mis primeros sistemas en uso real",
+    "body": "En el DAEM Galvarino pasé de manejar inventarios, admisión escolar y remuneraciones a construir el software para hacerlo."
+  },
+  {
+    "kicker": "Junio 2025",
+    "title": "La IA en la sala de clases",
+    "body": "Di la charla «La Inteligencia Artificial en tu Sala de Clases» a docentes de ocho escuelas rurales de Galvarino.",
+    "href": "https://es.linkedin.com/pulse/cuando-la-ia-se-encuentra-con-educaci%C3%B3n-una-eric-aguayo-quintriqueo-rgqte"
+  },
+  {
+    "kicker": "2026",
+    "title": "Nace AuraTech",
+    "body": "Hoy administro las plataformas digitales del DAEM Galvarino y, en paralelo, AuraTech lleva ese oficio a pymes del sur de Chile."
+  }
+]

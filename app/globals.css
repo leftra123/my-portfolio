@@ -1,346 +1,758 @@
-/* Importaciones de Tailwind */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* Variables y configuración base */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ─────────────────────────────────────────────────────────────
+   Aura Tech — tokens de marca (07-brand/tokens.css) + roles de UI.
+   Los colores de la interfaz se leen desde roles (--bg, --fg, …),
+   nunca desde hex sueltos en los componentes.
+   ───────────────────────────────────────────────────────────── */
+:root {
+  --aura-blue: #168bff;
+  --electric-blue: #42b5ff;
+  --deep-ink: #07111f;
+  --deep-ink-2: #0b1a2e;
+  --aura-mist: #eef7ff;
+  --slate: #64748b;
+  --aura-gradient: linear-gradient(135deg, #42dfff 0%, #009aff 45%, #0041ff 100%);
+
+  /* Claro */
+  --bg: #f7fafe;
+  --bg-elevated: #ffffff;
+  --bg-inset: #eef7ff;
+  --fg: #07111f;
+  --fg-muted: #475569;
+  --fg-subtle: #5b6b80;
+  --line: rgb(7 17 31 / 0.08);
+  --line-strong: rgb(7 17 31 / 0.16);
+  --accent: #0a64c2;
+  --accent-soft: rgb(22 139 255 / 0.1);
+  --glow: rgb(22 139 255 / 0.16);
+  --spotlight: rgb(22 139 255 / 0.08);
+  --btn-bg: #07111f;
+  --btn-fg: #eef7ff;
+  --grain-opacity: 0.035;
+  --grid-line: rgb(7 17 31 / 0.05);
+  --highlight: rgb(255 255 255 / 0.9);
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #07111f;
+  --bg-elevated: #0b1a2e;
+  --bg-inset: #0a1628;
+  --fg: #eef7ff;
+  --fg-muted: #a7b4c6;
+  --fg-subtle: #8494ab;
+  --line: rgb(238 247 255 / 0.08);
+  --line-strong: rgb(238 247 255 / 0.15);
+  --accent: #42b5ff;
+  --accent-soft: rgb(66 181 255 / 0.1);
+  --glow: rgb(22 139 255 / 0.22);
+  --spotlight: rgb(66 181 255 / 0.09);
+  --btn-bg: #eef7ff;
+  --btn-fg: #07111f;
+  --grain-opacity: 0.05;
+  --grid-line: rgb(238 247 255 / 0.045);
+  --highlight: rgb(238 247 255 / 0.07);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-inset: var(--bg-inset);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-aura: var(--aura-blue);
+  --color-electric: var(--electric-blue);
+  --color-ink: var(--deep-ink);
+  --color-mist: var(--aura-mist);
+  --color-btn: var(--btn-bg);
+  --color-btn-fg: var(--btn-fg);
+
+  --font-display: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", monospace;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@theme {
+  --text-display: clamp(2.75rem, 1.6rem + 5.2vw, 6.25rem);
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.045em;
+  --text-headline: clamp(2rem, 1.35rem + 2.6vw, 3.5rem);
+  --text-headline--line-height: 1.04;
+  --text-headline--letter-spacing: -0.035em;
+  --text-title: clamp(1.375rem, 1.15rem + 0.9vw, 1.875rem);
+  --text-title--line-height: 1.15;
+  --text-title--letter-spacing: -0.02em;
+  --breakpoint-xs: 26rem;
+}
+
 @layer base {
-  :root {
-    --navbar-height: 4rem;
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-    --radius: 0.75rem;
-    
-    /* Variables de animación */
-    --animation-duration-default: 250ms;
-    --animation-duration-enter: 300ms;
-    --animation-duration-exit: 200ms;
-    --animation-ease-standard: cubic-bezier(0.2, 0, 0.38, 1);
-    --animation-ease-out: cubic-bezier(0, 0, 0.2, 1);
-    --animation-ease-in: cubic-bezier(0.4, 0, 1, 1);
-    --animation-stagger: 25ms;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
-  }
-
-  /* Estilos base globales */
   * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-    overflow-x: hidden;
+    border-color: var(--line);
   }
 
   html {
-    scroll-padding-top: 80px;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
-    -webkit-tap-highlight-color: transparent; /* Elimina highlight al tocar en móviles */
+    scroll-padding-top: 6rem;
   }
 
-  /* Estilos para elementos comunes */
-  section {
-    scroll-margin-top: var(--navbar-height);
-    padding-top: calc(var(--navbar-height) + 2rem);
-    padding-bottom: 4rem;
-    min-height: auto; /* Soluciona problemas de altura en móviles */
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Media queries para responsividad en móviles */
-  @media (max-width: 640px) {
-    html {
-      scroll-padding-top: 64px; /* Ajustar para navbar más pequeño en móviles */
-    }
-    
-    section {
-      padding-top: calc(var(--navbar-height) + 1rem);
-      padding-bottom: 3rem;
-      min-height: auto !important; /* Fuerza altura automática */
-    }
-    
-    h1 {
-      font-size: 1.75rem !important;
-      line-height: 1.3 !important;
-    }
-    
-    h2 {
-      font-size: 1.5rem !important;
-      line-height: 1.3 !important;
-    }
-    
-    h3 {
-      font-size: 1.25rem !important;
-    }
-    
-    p {
-      font-size: 0.9375rem !important;
-    }
-    
-    .container {
-      padding-left: 1rem !important;
-      padding-right: 1rem !important;
-    }
-    
-    .py-20, .py-24, .py-16 {
-      padding-top: 2.5rem !important;
-      padding-bottom: 2.5rem !important;
-    }
-    
-    .pt-24, .md\:pt-28 {
-      padding-top: 2rem !important;  
-    }
-    
-    .pb-16, .md\:pb-20 {
-      padding-bottom: 2rem !important;
-    }
-    
-    .mb-12 {
-      margin-bottom: 2rem !important;
-    }
-    
-    .grid-cols-2, .grid-cols-3 {
-      grid-template-columns: 1fr !important;
-    }
-    
-    .gap-6, .gap-8, .gap-10, .gap-12 {
-      gap: 1rem !important;
-    }
-    
-    /* Ajuste específico para el hero */
-    #hero {
-      padding-bottom: 6rem !important; /* Espacio extra para el indicador de scroll */
-    }
-    
-    /* Mejora la legibilidad de los textos pequeños */
-    .text-xs {
-      font-size: 0.75rem !important;
-      line-height: 1.25 !important;
-    }
-    
-    /* Fix para inputs y botones con mejor área de toque */
-    button, 
-    [role="button"],
-    input,
-    textarea,
-    select,
-    a {
-      min-height: 42px !important;
-      font-size: 16px !important; /* Evita zoom automático en inputs iOS */
-      touch-action: manipulation; /* Mejora respuesta táctil */
-    }
-    
-    /* Pero mantenemos pequeños los botones con icono */
-    button[aria-label], 
-    a[aria-label] {
-      min-height: unset !important;
-      font-size: unset !important;
-    }
-    
-    /* Mejoras para el espaciado en tarjetas */
-    .card {
-      padding: 1rem !important;
-    }
-    
-    .card-content {
-      padding: 0.75rem !important;
-    }
+  ::selection {
+    background: rgb(22 139 255 / 0.28);
+    color: inherit;
   }
 
-  /* Ajustes para pantallas muy pequeñas */
-  @media (max-width: 375px) {
-    html {
-      font-size: 14px;
-    }
-    
-    .container {
-      padding-left: 0.75rem !important;
-      padding-right: 0.75rem !important;
-    }
-    
-    /* Reducir tamaño de elementos interactivos para pantallas pequeñas */
-    .social-links button,
-    .social-links a {
-      width: 36px !important;
-      height: 36px !important;
-    }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 6px;
   }
 
-  nav {
-    transition: all 0.3s var(--animation-ease-standard);
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    text-wrap: balance;
   }
 
-  nav.scrolled {
-    background-color: hsl(var(--background) / 0.98);
-    box-shadow: 0 2px 8px hsl(var(--foreground) / 0.05);
+  p {
+    text-wrap: pretty;
   }
 }
 
-/* Componentes y utilidades personalizadas */
-.view-more-button {
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Textura y fondos ─────────────────────────────────────── */
+
+/* Grano analógico: una sola capa fija, sin blend-mode, barata de pintar. */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Retícula que se desvanece desde el centro superior. */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: center top;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 75%);
+}
+
+/* El "aura": un solo halo radial detrás del isotipo, no una malla. */
+.aura-halo {
+  background: radial-gradient(closest-side, var(--glow), transparent 70%);
+  filter: blur(8px);
+}
+
+.text-aura {
+  background: var(--aura-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Borde de 1px con degradado (técnica de máscara). */
+.border-gradient {
   position: relative;
-  z-index: 10;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  padding: 0.5rem 1.5rem;
-  background-color: hsl(var(--background) / 0.85);
-  backdrop-filter: blur(4px);
-  border-radius: 9999px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s var(--animation-ease-standard);
+}
+.border-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(180deg, var(--line-strong), transparent 70%);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
-.view-more-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+/* Foco de luz que sigue al cursor (las coordenadas las pone <Spotlight />). */
+.spotlight {
+  --mx: 50%;
+  --my: 50%;
+}
+.spotlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 400ms var(--ease-out-quart);
+  background: radial-gradient(520px circle at var(--mx) var(--my), var(--spotlight), transparent 45%);
+}
+.spotlight:hover::after {
+  opacity: 1;
 }
 
-@media (max-width: 768px) {
-  .view-more-button {
-    margin-top: 1.5rem;
-  }
-}
+/* ── Movimiento ───────────────────────────────────────────── */
 
-/* Definición de animaciones */
-@keyframes fadeIn {
+@keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(14px);
+    filter: blur(4px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
+    filter: none;
   }
 }
 
-@keyframes blink {
-  0%, 100% {
-    opacity: 1;
+/* Entrada escalonada del primer pantallazo: --i define el orden. */
+.enter {
+  animation: rise 900ms var(--ease-out-expo) both;
+  animation-delay: calc(var(--i, 0) * 90ms + 80ms);
+}
+
+/* Revelado al hacer scroll, solo donde el navegador lo soporta. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 38%;
+    }
   }
-  50% {
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.7;
+  }
+  80%,
+  100% {
+    transform: scale(2.4);
     opacity: 0;
   }
 }
+.status-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: inherit;
+  animation: pulse-ring 2.4s var(--ease-out-quart) infinite;
+}
 
-@keyframes scroll {
-  0% {
-    transform: translateY(0);
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee 48s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Subrayado que crece desde la izquierda. */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 380ms var(--ease-out-quart);
+}
+.link-underline:hover,
+.link-underline:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* Lista con foco: al pasar sobre una fila, las demás bajan el tono. */
+@media (hover: hover) {
+  .dim-siblings:has(> :hover) > :not(:hover) {
+    opacity: 0.45;
+  }
+}
+.dim-siblings:has(> :focus-within) > :not(:focus-within) {
+  opacity: 0.45;
+}
+.dim-siblings > * {
+  transition: opacity 300ms var(--ease-out-quart);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(-6px);
+  }
+}
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.75;
   }
   50% {
-    transform: translateY(6px);
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+/* Ecos del isotipo que se expanden: el "aura" de la marca. */
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.55;
   }
   100% {
-    transform: translateY(0);
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+.aura-ripple {
+  opacity: 0;
+  animation: ripple 9s var(--ease-out-quart) infinite;
+  animation-delay: var(--d, 0s);
+}
+@media (prefers-reduced-motion: reduce) {
+  .aura-ripple {
+    animation: none;
+    opacity: 0.25;
+    transform: scale(1.6);
   }
 }
 
-/* Ajuste para la animación de "spin" que funciona mejor */
-@keyframes spin-slow {
+@media (prefers-reduced-motion: reduce) {
+  .enter {
+    animation: none;
+  }
+}
+
+/* Transiciones de vista.
+   Al navegar: el resto de la página se funde rápido y la portada y el título del proyecto
+   viajan a su lugar (morph). Al cambiar de tema: el tema nuevo se revela en círculo desde el botón. */
+::view-transition {
+  pointer-events: none;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  animation: 180ms cubic-bezier(0.25, 1, 0.5, 1) both vt-out;
+}
+::view-transition-new(root) {
+  animation: 280ms cubic-bezier(0.25, 1, 0.5, 1) 60ms both vt-in;
+}
+@keyframes vt-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes vt-in {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+  }
+}
+::view-transition-group(.morph) {
+  animation-duration: 560ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+::view-transition-image-pair(.morph) {
+  animation-name: via-blur;
+}
+@keyframes via-blur {
+  30% {
+    filter: blur(3px);
+  }
+}
+html.theme-vt::view-transition-old(root) {
+  animation: none;
+}
+html.theme-vt::view-transition-new(root) {
+  animation: theme-reveal 520ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0s !important;
+  }
+}
+@keyframes theme-reveal {
+  from {
+    clip-path: circle(0 at var(--vt-x, 100%) var(--vt-y, 0));
   }
   to {
-    transform: rotate(360deg);
+    clip-path: circle(var(--vt-r, 150vmax) at var(--vt-x, 100%) var(--vt-y, 0));
   }
 }
 
-/* Clases de animación */
-.animate-fadeIn {
-  animation: fadeIn 0.3s var(--animation-ease-out) forwards;
+/* Impresión (sobre todo /cv): papel blanco, sin cromo del sitio. */
+@media print {
+  :root,
+  .dark {
+    --bg: #ffffff;
+    --bg-elevated: #ffffff;
+    --fg: #07111f;
+    --fg-muted: #334155;
+    --fg-subtle: #475569;
+    --line: rgb(7 17 31 / 0.14);
+    --accent: #0a64c2;
+    color-scheme: light;
+  }
+  .grain::after {
+    display: none;
+  }
+  /* Al imprimir, todo en su estado final: sin inclinaciones, capas 3D ni animaciones a medio camino. */
+  .reveal,
+  .straighten,
+  .word-reveal > span,
+  .enter {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  .arch-scene,
+  .logo-3d {
+    display: none !important;
+  }
+  .tilt-target,
+  .tilt-near {
+    transform: none !important;
+  }
+  @page {
+    size: A4;
+    margin: 14mm 14mm 12mm;
+  }
 }
 
-.animate-blink {
-  animation: blink 1s step-end infinite;
+/* Arista superior iluminada: da relieve sin sombras grandes. */
+.lit {
+  box-shadow: inset 0 1px 0 var(--highlight);
 }
 
-.animate-scroll {
-  animation: scroll 1.5s infinite;
+/* ── AuraTech: patrones a pantalla completa ─────────────────── */
+
+/* Frase que se ilumina palabra por palabra al hacer scroll (CSS puro). */
+.word-reveal > span {
+  opacity: 1;
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .word-reveal > span {
+      animation: word-in linear both;
+      animation-timeline: view();
+      animation-range: entry 35% cover 45%;
+    }
+  }
+}
+@keyframes word-in {
+  from {
+    opacity: 0.16;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.animate-spin-slow {
-  animation: spin-slow 10s linear infinite;
+/* Indicador para seguir bajando. */
+@keyframes scroll-cue {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  45% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  55% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+.scroll-cue {
+  animation: scroll-cue 2.4s var(--ease-out-quart) infinite;
 }
 
-/* Arreglos específicos para componentes */
-.hero-image-container {
-  @apply relative;
+/* Grillas sin huecos: si el número de elementos es impar, el último ocupa la fila completa
+   (dos arriba, uno abajo) y nunca queda una celda gris vacía. */
+@media (min-width: 40rem) {
+  .grid-fill-2 > :last-child:nth-of-type(odd) {
+    grid-column: 1 / -1;
+  }
+}
+@media (min-width: 48rem) {
+  .md\:grid-fill-2 > :last-child:nth-of-type(odd) {
+    grid-column: 1 / -1;
+  }
 }
 
-.project-card {
-  @apply flex flex-col;
-  max-width: 100%;
+/* ── 3D sin WebGL ─────────────────────────────────────────────
+   Todo es CSS 3D: perspectiva, capas en Z y animaciones ligadas al scroll.
+   Ojo: overflow, opacity < 1 y filter "aplanan" a un elemento con preserve-3d,
+   por eso van siempre en el contenedor de afuera o en las hojas. */
+
+/* Arquitectura en capas: vista explotada isométrica. */
+@property --gap {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 38px;
+}
+.arch-scene {
+  perspective: 1600px;
+}
+.arch-stack {
+  position: absolute;
+  /* Más aire arriba: el plano superior sube ~3 separaciones en Z y no debe tapar el título. */
+  inset: 32% 15% 14%;
+  transform-style: preserve-3d;
+  transform: rotateX(56deg) rotateZ(-38deg);
+}
+.arch-plane {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  border: 1px solid var(--line-strong);
+  background:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px) 0 0 / 20px 20px,
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px) 0 0 / 20px 20px,
+    color-mix(in oklab, var(--bg-elevated) 88%, transparent);
+  box-shadow: 0 40px 50px -36px rgb(0 0 0 / 0.55);
+  transform: translateZ(calc(var(--z) * var(--gap)));
+  transition:
+    transform 600ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 300ms,
+    opacity 300ms,
+    box-shadow 300ms;
+}
+.arch-plane:first-child {
+  border-color: color-mix(in oklab, var(--accent) 60%, transparent);
+  box-shadow:
+    0 40px 50px -36px rgb(0 0 0 / 0.55),
+    0 0 48px -12px var(--glow);
+}
+.arch-label {
+  position: absolute;
+  left: 16px;
+  bottom: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  white-space: nowrap;
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .arch-stack {
+      animation: arch-explode linear both;
+      animation-timeline: view();
+      animation-range: entry 15% cover 50%;
+    }
+  }
+}
+@keyframes arch-explode {
+  from {
+    --gap: 3px;
+  }
+  to {
+    --gap: 38px;
+  }
+}
+/* Al pasar por una capa de la lista, su plano se ilumina y sube. */
+@media (hover: hover) {
+  .arch-list > li {
+    transition: opacity 300ms;
+  }
+  .arch:has(.arch-list > li:hover) .arch-plane {
+    opacity: 0.35;
+  }
+  .arch:has(.arch-list > li:nth-child(1):hover) .arch-plane:nth-child(1),
+  .arch:has(.arch-list > li:nth-child(2):hover) .arch-plane:nth-child(2),
+  .arch:has(.arch-list > li:nth-child(3):hover) .arch-plane:nth-child(3),
+  .arch:has(.arch-list > li:nth-child(4):hover) .arch-plane:nth-child(4),
+  .arch:has(.arch-list > li:nth-child(5):hover) .arch-plane:nth-child(5),
+  .arch:has(.arch-list > li:nth-child(6):hover) .arch-plane:nth-child(6) {
+    opacity: 1;
+    border-color: var(--accent);
+    box-shadow:
+      0 40px 50px -30px rgb(0 0 0 / 0.6),
+      0 0 56px -10px var(--glow);
+    transform: translateZ(calc(var(--z) * var(--gap) + 18px));
+  }
+}
+
+/* Inclinación con el puntero (la pone <Tilt />) y un reflejo que lo sigue. */
+.tilt {
+  --rx: 0deg;
+  --ry: 0deg;
+  --gx: 50%;
+  --gy: 50%;
+}
+.tilt-target {
+  transform: perspective(1200px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.tilt-near {
+  transform: perspective(1200px) rotateX(var(--rx)) rotateY(var(--ry)) translateZ(36px);
+}
+.tilt-glare::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at var(--gx) var(--gy), rgb(255 255 255 / 0.14), transparent 55%);
+  transition: opacity 500ms;
+}
+.tilt:hover .tilt-glare::after {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce), (hover: none) {
+  .tilt-target,
+  .tilt-near {
+    transform: none;
+  }
+  .tilt-glare::after {
+    display: none;
+  }
+}
+
+/* Capturas que llegan inclinadas hacia atrás y se enderezan al entrar en pantalla. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .straighten {
+      transform-origin: 50% 100%;
+      animation: straighten linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 40%;
+    }
+  }
+}
+@keyframes straighten {
+  from {
+    transform: perspective(1200px) rotateX(22deg) scale(0.92);
+    opacity: 0.35;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* Isotipo con volumen: 14 capas en Z. */
+.logo-3d {
+  perspective: 900px;
+}
+.logo-3d-sway {
+  transform-style: preserve-3d;
+  animation: logo-sway 14s ease-in-out infinite;
+}
+.logo-3d-body {
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(calc(10deg + var(--rx, 0deg))) rotateY(calc(-20deg + var(--ry, 0deg)));
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.logo-3d-layer {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: color-mix(in oklab, #0a5bd8, #03112e calc((1 - var(--l) / var(--n)) * 100%));
+  transform: translateZ(calc(var(--l) * 1.5px));
+}
+.logo-3d-layer:not(:first-child) {
+  position: absolute;
+  inset: 0;
+}
+@keyframes logo-sway {
+  0%,
+  100% {
+    transform: rotateY(-7deg) rotateX(2deg);
+  }
+  50% {
+    transform: rotateY(9deg) rotateX(-3deg);
+  }
+}
+
+/* Piso en perspectiva que avanza (404). */
+.floor {
+  position: absolute;
+  inset-inline: -50%;
+  bottom: 0;
+  height: 120%;
   overflow: hidden;
+  transform: perspective(520px) rotateX(52deg);
+  transform-origin: 50% 100%;
+  mask-image: linear-gradient(to top, #000 5%, transparent 80%);
 }
-
-.timeline-item {
-  max-width: 100%;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
+.floor::before {
+  content: "";
+  position: absolute;
+  inset: -56px 0 0;
+  background-image:
+    linear-gradient(to right, rgb(22 139 255 / 0.32) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(22 139 255 / 0.32) 1px, transparent 1px);
+  background-size: 56px 56px;
+  animation: floor-run 2.4s linear infinite;
 }
-
-/* Clases utilitarias adicionales para móviles */
-@media (max-width: 640px) {
-  .line-clamp-mobile-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  
-  .line-clamp-mobile-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  
-  /* Mejora del aspecto visual en tarjetas */
-  .card-compact {
-    padding: 0.75rem !important;
-  }
-  
-  /* Mejora la experiencia del botón flotante de volver arriba */
-  .scroll-to-top {
-    bottom: 1rem !important;
-    left: 1rem !important;
-    width: 40px !important;
-    height: 40px !important;
+@keyframes floor-run {
+  to {
+    transform: translateY(56px);
   }
 }

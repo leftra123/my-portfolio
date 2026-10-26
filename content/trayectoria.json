@@ -1,0 +1,32 @@
+[
+  {
+    "period": "2026 — hoy",
+    "title": "Fundador",
+    "org": "AuraTech",
+    "body": "Software a medida: reservas con pago en línea, eCommerce y automatización para pymes."
+  },
+  {
+    "period": "2026 — hoy",
+    "title": "Administrador de Plataformas Digitales y Desarrollador Web",
+    "org": "DAEM Galvarino",
+    "body": "Diseño, desarrollo y opero EduGalvarino, la plataforma de las 21 escuelas municipales."
+  },
+  {
+    "period": "Abr — Dic 2025",
+    "title": "Profesional de apoyo en labores educativas",
+    "org": "DAEM Galvarino",
+    "body": "Gestión documental del personal y de los bienes del departamento."
+  },
+  {
+    "period": "2023 — 2024",
+    "title": "Inventarios y procesos administrativos",
+    "org": "DAEM Galvarino",
+    "body": "Inventario, admisión escolar y BRP. De ahí nació RemuPro."
+  },
+  {
+    "period": "Mar — Jul 2023",
+    "title": "Práctica profesional y análisis de datos",
+    "org": "DAEM Galvarino",
+    "body": "API con Django REST y React; análisis financiero con Python."
+  }
+]
